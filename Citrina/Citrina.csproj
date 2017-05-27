@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup Label="Configuration">
+    <DocumentationFile>bin\Release\Citrina.xml</DocumentationFile>
+    <OutputPath />
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <PackageId>Citrina</PackageId>
+    <Title>Citrina (VK API for .NET)</Title>
+    <Summary>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods.</Summary>
+    <Authors>Khrabrov Arthur</Authors>
+    <Owners>Khrabrov Arthur</Owners>
+    <PackageIconUrl>https://s3.eu-central-1.amazonaws.com/vkcmgr.net/images/citrina1.png</PackageIconUrl>
+    <PackageProjectUrl>https://bitbucket.org/monterreyxdd/citrina/wiki/Home</PackageProjectUrl>
+    <Description>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>Added .NET 4.6 compat
+
+More info at https://bitbucket.org/monterreyxdd/citrina/wiki/Home
+</PackageReleaseNotes>
+    <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
+    <PackageTags>vk api vkontakte vkapi</PackageTags>
+    <AssemblyVersion>2.3.0</AssemblyVersion>
+    <FileVersion>2.3.0</FileVersion>
+    <PackageVersion>2.3.0</PackageVersion>
+    <Version>2.3.0</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+  </ItemGroup>
+</Project>
