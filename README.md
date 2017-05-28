@@ -27,7 +27,7 @@ Citrina works with all types of access tokens and will help you to get one.
 2. __Community Token__
    
    ```csharp
-   var token = new GroupAccessToken(value: "73364910a57d813fd86be4c4836ff008d1aed4b7ff", groupId: 123123123, appId: 7654321);
+   var token = new CommunityAccessToken(value: "73364910a57d813fd86be4c4836ff008d1aed4b7ff", communityId: 123123123, appId: 7654321);
    ```
 3. __Service Token__
    
@@ -52,7 +52,7 @@ var codeLink = client.Authentication.GenerateLink(LinkType.Code, 7654321, "http:
 Use GetAccessTokenAsync to get an access token for Authorization Code Flow.
 Note that __RedirectUri__ in __GetAccessTokenAsync__ method must be equal to __RedirectUri__ in __GenerateLink__ method!
 ```csharp
-var call = await client.Authentication.GetAccessTokenAsync(7654321, "wkE1SyDTei4h2MyV", "http://test.com/account", "ecc20ad9c6a53a5").ConfigureAwait(false);
+var call = await client.Authentication.GetAccessTokenAsync(7654321, "wkE1SyDTei4h2MyV", "http://test.com/account", "ecc20ad9c6a53a5");
 var token = call.AccessToken;
 ```
 
@@ -106,9 +106,9 @@ if (!upload.IsError)
 
 And now let's upload an audio.
 ```csharp
-var call = await Client.Audio.GetUploadServer(new AudioGetUploadServerRequest { AccessToken = token }).ConfigureAwait(false);
+var call = await Client.Audio.GetUploadServer(new AudioGetUploadServerRequest { AccessToken = token });
 
-var upload = await Client.Uploader.Audio.UploadAudioAsync(call.Response, @"C:\my_fav_song.mp3").ConfigureAwait(false);
+var upload = await Client.Uploader.Audio.UploadAudioAsync(call.Response, @"C:\my_fav_song.mp3");
 
 if (!upload.IsError)
 {
@@ -120,7 +120,7 @@ if (!upload.IsError)
       Audio = upload.Data.Audio,
       Artist = "some artist",
       Title = "some title"
-   }).ConfigureAwait(false);
+   });
 }
 ```
 
