@@ -15,20 +15,22 @@
     <Description>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>
-      Naming fixes
+      Symbols and sources included in the package
 
       Docs: https://github.com/khrabrovart/Citrina
     </PackageReleaseNotes>
     <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
     <PackageTags>vk api vkontakte vkapi</PackageTags>
-    <AssemblyVersion>2.3.1</AssemblyVersion>
-    <FileVersion>2.3.1</FileVersion>
-    <PackageVersion>2.3.1</PackageVersion>
-    <Version>2.3.1</Version>
+    <AssemblyVersion>2.4.0</AssemblyVersion>
+    <FileVersion>2.4.0</FileVersion>
+    <PackageVersion>2.4.0</PackageVersion>
+    <Version>2.4.0</Version>
     <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="obj\**" />
@@ -37,6 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.3.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 </Project>
