@@ -7,14 +7,14 @@ using Newtonsoft.Json.Linq;
 
 namespace Citrina
 {
-    internal class Authentication : IAuthentication
+    internal class AuthHelpers : IAuthHelpers
     {
         public string GenerateLink(LinkType type, int clientId, string redirectUri, DisplayOptions display, UserPermissions scope, string state)
         {
             var sb = new StringBuilder($"https://oauth.vk.com/authorize?client_id={clientId}");
             var uri = string.IsNullOrWhiteSpace(redirectUri) ? "https://oauth.vk.com/blank.html" : redirectUri;
 
-            sb.Append($"&scope={scope.ToString("D")}");
+            sb.Append($"&scope={scope:D}");
             sb.Append($"&response_type={type.ToString().ToLower()}");
             sb.Append($"&v={CitrinaGlobalSettings.ApiVersion}");
             sb.Append($"&redirect_uri={uri}");
@@ -48,7 +48,7 @@ namespace Citrina
             var uri = string.IsNullOrWhiteSpace(redirectUri) ? "https://oauth.vk.com/blank.html" : redirectUri;
 
             sb.Append($"&group_ids={string.Join(",", groupIds)}");
-            sb.Append($"&scope={scope.ToString("D")}");
+            sb.Append($"&scope={scope:D}");
             sb.Append($"&response_type={type.ToString().ToLower()}");
             sb.Append($"&v={CitrinaGlobalSettings.ApiVersion}");
             sb.Append($"&redirect_uri={uri}");
@@ -76,7 +76,7 @@ namespace Citrina
             return GenerateLink(type, clientId, groupIds, scope, null);
         }
 
-        public async Task<CodeAuthenticationCall> GetAccessTokenAsync(int clientId, string clientSecret, string redirectUri, string code)
+        public async Task<CodeAuthCall> GetAccessTokenAsync(int clientId, string clientSecret, string redirectUri, string code)
         {
             var sb = new StringBuilder($"https://oauth.vk.com/access_token?client_id={clientId}");
             var uri = string.IsNullOrWhiteSpace(redirectUri) ? "https://oauth.vk.com/blank.html" : redirectUri;
@@ -94,15 +94,15 @@ namespace Citrina
 
                 if (jobj.error != null)
                 {
-                    return new CodeAuthenticationCall
+                    return new CodeAuthCall
                     {
-                        Error = JsonCore.Deserialize<CodeAuthenticationCallError>(response),
+                        Error = JsonCore.Deserialize<CodeAuthCallError>(response),
                         IsError = true
                     };
                 }
 
-                var token = JsonCore.Deserialize<CodeAuthenticationCallResponse>(response);
-                return new CodeAuthenticationCall
+                var token = JsonCore.Deserialize<CodeAuthCallResponse>(response);
+                return new CodeAuthCall
                 {
                     AccessToken = new UserAccessToken(token.AccessToken, token.ExpiresIn, token.UserId, clientId)
                 };

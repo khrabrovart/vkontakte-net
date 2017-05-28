@@ -7,23 +7,28 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <PackageId>Citrina</PackageId>
     <Title>Citrina (VK API for .NET)</Title>
-    <Summary>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods.</Summary>
+    <Summary>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Summary>
     <Authors>Khrabrov Arthur</Authors>
     <Owners>Khrabrov Arthur</Owners>
     <PackageIconUrl>https://s3.eu-central-1.amazonaws.com/vkcmgr.net/images/citrina1.png</PackageIconUrl>
-    <PackageProjectUrl>https://bitbucket.org/monterreyxdd/citrina/wiki/Home</PackageProjectUrl>
-    <Description>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods.</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Added .NET 4.6 compat
+    <PackageProjectUrl>https://github.com/khrabrovart/Citrina</PackageProjectUrl>
+    <Description>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Description>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>
+      Naming fixes
 
-More info at https://bitbucket.org/monterreyxdd/citrina/wiki/Home
-</PackageReleaseNotes>
+      Docs: https://github.com/khrabrovart/Citrina
+    </PackageReleaseNotes>
     <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
     <PackageTags>vk api vkontakte vkapi</PackageTags>
-    <AssemblyVersion>2.3.0</AssemblyVersion>
-    <FileVersion>2.3.0</FileVersion>
-    <PackageVersion>2.3.0</PackageVersion>
-    <Version>2.3.0</Version>
+    <AssemblyVersion>2.3.1</AssemblyVersion>
+    <FileVersion>2.3.1</FileVersion>
+    <PackageVersion>2.3.1</PackageVersion>
+    <Version>2.3.1</Version>
+    <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE.md</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="obj\**" />

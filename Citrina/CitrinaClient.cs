@@ -17,7 +17,7 @@ namespace Citrina
         /// Read more about authentication on official VK page https://vk.com/dev/access_token
         /// </para>
         /// </summary>
-        public IAuthentication Authentication { get; }
+        public IAuthHelpers AuthHelpers { get; }
 
         /// <summary>
         /// Gets methods to work with Callback API.
@@ -326,7 +326,7 @@ namespace Citrina
         /// </summary>
         public CitrinaClient()
         {
-            Authentication = new Authentication();
+            AuthHelpers = new AuthHelpers();
             CallbackApi = new CallbackEventHandler();
             Uploader = new GenericUploader();
             Execute = new ExecuteApi();

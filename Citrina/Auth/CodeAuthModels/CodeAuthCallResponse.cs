@@ -1,6 +1,6 @@
 ﻿namespace Citrina
 {
-    internal class CodeAuthenticationCallResponse
+    internal class CodeAuthCallResponse
     {
         public string AccessToken { get; set; }
         public double ExpiresIn { get; set; }

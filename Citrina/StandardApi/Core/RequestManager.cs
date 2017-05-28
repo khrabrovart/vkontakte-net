@@ -60,7 +60,7 @@ namespace Citrina.StandardApi.Core
                 call.Parameters.Add("v", version);
             }
             
-            if (call.Request.AccessToken is UserAccessToken || call.Request.AccessToken is GroupAccessToken)
+            if (call.Request.AccessToken is UserAccessToken || call.Request.AccessToken is CommunityAccessToken)
             {
                 await EnqueueAsync(call.Request.AccessToken, call).ConfigureAwait(false);
             }

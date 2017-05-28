@@ -1,21 +1,21 @@
 ﻿namespace Citrina
 {
     /// <summary>
-    /// Represents the VK group access token.
+    /// Represents the VK community access token.
     /// </summary>
-    public class GroupAccessToken : IAccessToken
+    public class CommunityAccessToken : IAccessToken
     {
         /// <summary>
-        /// Initializes a new instance of the GroupAccessToken class that represents group access token. 
-        /// Group access tokens has no time limit.
+        /// Initializes a new instance of the CommunityAccessToken class that represents community access token. 
+        /// Community access tokens has no time limit.
         /// </summary>
         /// <param name="value">Access token value.</param>
-        /// <param name="groupId">Group identifier.</param>
+        /// <param name="communityId">Community identifier.</param>
         /// <param name="appId">Application identifier.</param>
-        public GroupAccessToken(string value, int groupId, int appId)
+        public CommunityAccessToken(string value, int communityId, int appId)
         {
             Value = value;
-            GroupId = groupId;
+            CommunityId = communityId;
             ApplicationId = appId;
         }
 
@@ -25,9 +25,9 @@
         public string Value { get; }
 
         /// <summary>
-        /// Gets the group identifier.
+        /// Gets the community identifier.
         /// </summary>
-        public int GroupId { get; }
+        public int CommunityId { get; }
 
         /// <summary>
         /// Gets the application identifier.
