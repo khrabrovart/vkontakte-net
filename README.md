@@ -1,6 +1,7 @@
 # Citrina
 Citrina is a first full-blown high-performance [VK (VKontakte) API](https://vk.com/dev/manuals) realization for .NET that offers full support of all existing methods.
 
+
 ## Description 
 Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.62__.
 
@@ -18,6 +19,7 @@ There is also the [Callback API](https://vk.com/dev/callback_api) support. Callb
 
 In any case Citrina is suitable for every .NET application that needs fast access to VK data.
 
+
 ## Installation
 Installation process is very simple with the NuGet Package Manager. Just copy the command below to your Package Manager Console and execute it:
 
@@ -26,6 +28,7 @@ Install-Package Citrina
 ```
 
 [Citrina package in the NuGet](https://www.nuget.org/packages/Citrina/)
+
 
 ## User Guide
 ### Access Tokens
@@ -51,11 +54,13 @@ Citrina works with all types of access tokens and will help you to get one.
    var token = new ServiceAccessToken(value: "73364910a57d813fd86be4c4836ff008d1aed4b7ff", appId: 7654321);
    ```
 
+
 ### Client
 To start working with Citrina you have to create a new client instance. After that you'll be able to call any API method.
 ```csharp
 var client = new CitrinaClient();
 ```
+
 
 ### Authentication Helpers
 To obtain a new token you can use special authentication helpers.
@@ -76,6 +81,7 @@ Code generation and token obtaining process for community tokens is almost the s
 var codeLink = client.Authentication.GenerateLink(LinkType.Code, 7654321, new []{ 123123123, 345345345 }, "http://test.com/account", DisplayOptions.Default, GroupPermissions.Manage | GroupPermissions.Messages, "some message");
 ```
 
+
 ### Standard API
 Citrina client is required to call any VK API method with parameters.
 All methods are _async_ but they are named as they are named in VK.
@@ -94,6 +100,7 @@ else
    var errorMessage = call.Error.Message;
 }
 ```
+
 
 ### Custom Execute Methods
 In VK API an __execute__ method is universal method for calling a sequence of other methods while saving and filtering interim results.
@@ -118,7 +125,7 @@ Method call (note that prefix _execute_ in the method name is not needed):
 ```csharp
 public async Task<ExecuteResponse> ExecuteMe(int communityOwnerId, UserAccessToken accessToken)
 {
-   var call = await lient.Execute.Call<ExecuteResponse>("testMethod", new ExecuteRequest(accessToken, new Dictionary<string, object>
+   var call = await client.Execute.Call<ExecuteResponse>("testMethod", new ExecuteRequest(accessToken, new Dictionary<string, object>
    {
       ["ownerId"] = communityOwnerId
    }));
@@ -131,6 +138,7 @@ public async Task<ExecuteResponse> ExecuteMe(int communityOwnerId, UserAccessTok
    return call.Response;
 }
 ```
+
 
 ### File Uploading
 Citrina supports all kinds of file uploading in VK API. You can get an uploader right from the Citrina client. 
@@ -175,5 +183,6 @@ if (!upload.IsError)
    });
 }
 ```
+
 
 ### To be continued...
