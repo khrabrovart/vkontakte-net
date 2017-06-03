@@ -2,13 +2,13 @@
 Citrina is a first full-blown high-performance [VK (VKontakte) API](https://vk.com/dev/manuals) realization for .NET that offers full support of all existing methods.
 
 ## Description 
-Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that is described by VK API JSON Schema is __5.62__.
+Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.62__.
 
-_The converter that parses the JSON schema and transforms it to C# code is not included in the current repo and will be published separately in the near future._
+_Converter that parses the JSON schema and transforms it to C# code is not included in the current repo and will be published separately in the near future._
 
-Moreover Citrina uses request queues to deal with high loads. Every request either puts in a queue or processes instantly depending on the existence of an access token. Every access token has its own queue to maximize performance. This kind of logic prevents VK from returning the "Too many requests per second" error. 
+Moreover Citrina uses request queues to deal with high loads. Every request either puts in a queue or processes instantly depending on existence of an access token. Every access token has its own queue to maximize performance. This kind of logic prevents VK from returning the "Too many requests per second" error. 
 It is important when you need to process several requests at a time. There can be maximum 3 requests to API methods per second from a client according to the [official VK API documentation](https://vk.com/dev/api_requests). Citrina puts these requests in a queue and then processes them as fast as possible. All you need to do is to wait for responses to return.
-You can do this in _async_ way: call the VK API method async, do whatever you want and then get the response when you need it.
+You can do this in _async_ way: call any VK API method async, do whatever you want and then get the response when you need it.
 
 __All the API methods in Citrina are async.__
 
@@ -92,6 +92,43 @@ if (!call.IsError)
 else
 {
    var errorMessage = call.Error.Message;
+}
+```
+
+### Custom Execute Methods
+In VK API an __execute__ method is universal method for calling a sequence of other methods while saving and filtering interim results.
+Such methods can be useful when you need to call several methods at once and get the response instantly. With Citrina you can easily call your own execute methods.
+
+For example, response models:
+```csharp
+public class ExecuteResponse
+{
+   IEnumerable<ExecuteResponseItem> Items;
+}
+
+public class ExecuteResponseItem
+{
+   public int? Id { get; set; }
+   public int? FromId { get; set; }
+   public DateTime? Date { get; set; }
+}
+```
+
+Method call (note that prefix _execute_ in the method name is not needed):
+```csharp
+public async Task<ExecuteResponse> ExecuteMe(int communityOwnerId, UserAccessToken accessToken)
+{
+   var call = await lient.Execute.Call<ExecuteResponse>("testMethod", new ExecuteRequest(accessToken, new Dictionary<string, object>
+   {
+      ["ownerId"] = communityOwnerId
+   }));
+
+   if (call.IsError)
+   {
+       throw new Exception($"Error has occured: {call.Error.Message}");
+   }
+
+   return call.Response;
 }
 ```
 
