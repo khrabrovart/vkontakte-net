@@ -1,7 +1,22 @@
 # Citrina
 Citrina is a first full-blown high-performance [VK (VKontakte) API](https://vk.com/dev/manuals) realization for .NET that offers full support of all existing methods.
-It uses request queues to deal with high loads. 
-Citrina is suitable for any .NET application that needs fast access to VK data.
+
+## Description 
+Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that is described by VK API JSON Schema is __5.62__.
+
+_The converter that parses the JSON schema and transforms it to C# code is not included in the current repo and will be published separately in the near future._
+
+Moreover Citrina uses request queues to deal with high loads. Every request either puts in a queue or processes instantly depending on the existence of an access token. Every access token has its own queue to maximize performance. This kind of logic prevents VK from returning the "Too many requests per second" error. 
+It is important when you need to process several requests at a time. There can be maximum 3 requests to API methods per second from a client according to the [official VK API documentation](https://vk.com/dev/api_requests). Citrina puts these requests in a queue and then processes them as fast as possible. All you need to do is to wait for responses to return.
+You can do this in _async_ way: call the VK API method async, do whatever you want and then get the response when you need it.
+
+__All the API methods in Citrina are async.__
+
+In addition Citrina supports custom [execute methods](https://vk.com/dev/execute). This kind of methods can be created by application administrator. With Citrina you can call that methods easily by creating custom request/response models and passing a dictionary of parameters in the constructor.
+
+There is also the [Callback API](https://vk.com/dev/callback_api) support. Callback API is a tracking tool for users activity in your VK communities.
+
+In any case Citrina is suitable for every .NET application that needs fast access to VK data.
 
 ## Installation
 Installation process is very simple with the NuGet Package Manager. Just copy the command below to your Package Manager Console and execute it:
