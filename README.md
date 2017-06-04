@@ -1,7 +1,36 @@
 # Citrina
 Citrina is a first full-blown high-performance [VK (VKontakte) API](https://vk.com/dev/manuals) realization for .NET that offers full support of all existing methods.
-It uses request queues to deal with high loads. 
-Citrina is suitable for any .NET application that needs fast access to VK data.
+
+
+## Table of contents
+- [Description](https://github.com/khrabrovart/Citrina/blob/master/README.md#description)
+- [Installation](https://github.com/khrabrovart/Citrina/blob/master/README.md#installation)
+- [User Guide](https://github.com/khrabrovart/Citrina/blob/master/README.md#user-guide)
+	- [Access Tokens](https://github.com/khrabrovart/Citrina/blob/master/README.md#access-tokens)
+    - [Client](https://github.com/khrabrovart/Citrina/blob/master/README.md#client)
+    - [Authentication Helpers](https://github.com/khrabrovart/Citrina/blob/master/README.md#authentication-helpers)
+    - [Standard API](https://github.com/khrabrovart/Citrina/blob/master/README.md#standard-api)
+    - [Custom Execute Methods](https://github.com/khrabrovart/Citrina/blob/master/README.md#custom-execute-methods)
+    - [File Uploading](https://github.com/khrabrovart/Citrina/blob/master/README.md#file-uploading)
+
+
+## Description 
+Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.62__.
+
+_Converter that parses the JSON schema and transforms it to C# code is not included in the current repo and will be published separately in the near future._
+
+Moreover Citrina uses request queues to deal with high loads. Every request either puts in a queue or processes instantly depending on existence of an access token. Every access token has its own queue to maximize performance. This kind of logic prevents VK from returning the "Too many requests per second" error. 
+It is important when you need to process several requests at a time. There can be maximum 3 requests to API methods per second from a client according to the [official VK API documentation](https://vk.com/dev/api_requests). Citrina puts these requests in a queue and then processes them as fast as possible. All you need to do is to wait for responses to return.
+You can do this in _async_ way: call any VK API method async, do whatever you want and then get the response when you need it.
+
+__All the API methods in Citrina are async.__
+
+In addition Citrina supports custom [execute methods](https://vk.com/dev/execute). This kind of methods can be created by application administrator. With Citrina you can call that methods easily by creating custom request/response models and passing a dictionary of parameters in the constructor.
+
+There is also the [Callback API](https://vk.com/dev/callback_api) support. Callback API is a tracking tool for users activity in your VK communities.
+
+In any case Citrina is suitable for every .NET application that needs fast access to VK data.
+
 
 ## Installation
 Installation process is very simple with the NuGet Package Manager. Just copy the command below to your Package Manager Console and execute it:
@@ -11,6 +40,7 @@ Install-Package Citrina
 ```
 
 [Citrina package in the NuGet](https://www.nuget.org/packages/Citrina/)
+
 
 ## User Guide
 ### Access Tokens
@@ -36,11 +66,13 @@ Citrina works with all types of access tokens and will help you to get one.
    var token = new ServiceAccessToken(value: "73364910a57d813fd86be4c4836ff008d1aed4b7ff", appId: 7654321);
    ```
 
+
 ### Client
 To start working with Citrina you have to create a new client instance. After that you'll be able to call any API method.
 ```csharp
 var client = new CitrinaClient();
 ```
+
 
 ### Authentication Helpers
 To obtain a new token you can use special authentication helpers.
@@ -61,6 +93,7 @@ Code generation and token obtaining process for community tokens is almost the s
 var codeLink = client.Authentication.GenerateLink(LinkType.Code, 7654321, new []{ 123123123, 345345345 }, "http://test.com/account", DisplayOptions.Default, GroupPermissions.Manage | GroupPermissions.Messages, "some message");
 ```
 
+
 ### Standard API
 Citrina client is required to call any VK API method with parameters.
 All methods are _async_ but they are named as they are named in VK.
@@ -79,6 +112,45 @@ else
    var errorMessage = call.Error.Message;
 }
 ```
+
+
+### Custom Execute Methods
+In VK API an __execute__ method is universal method for calling a sequence of other methods while saving and filtering interim results.
+Such methods can be useful when you need to call several methods at once and get the response instantly. With Citrina you can easily call your own execute methods.
+
+For example, response models:
+```csharp
+public class ExecuteResponse
+{
+   IEnumerable<ExecuteResponseItem> Items;
+}
+
+public class ExecuteResponseItem
+{
+   public int? Id { get; set; }
+   public int? FromId { get; set; }
+   public DateTime? Date { get; set; }
+}
+```
+
+Method call (note that prefix _execute_ in the method name is not needed):
+```csharp
+public async Task<ExecuteResponse> ExecuteMe(int communityOwnerId, UserAccessToken accessToken)
+{
+   var call = await client.Execute.Call<ExecuteResponse>("testMethod", new ExecuteRequest(accessToken, new Dictionary<string, object>
+   {
+      ["ownerId"] = communityOwnerId
+   }));
+
+   if (call.IsError)
+   {
+       throw new Exception($"Error has occured: {call.Error.Message}");
+   }
+
+   return call.Response;
+}
+```
+
 
 ### File Uploading
 Citrina supports all kinds of file uploading in VK API. You can get an uploader right from the Citrina client. 
@@ -123,5 +195,6 @@ if (!upload.IsError)
    });
 }
 ```
+
 
 ### To be continued...
