@@ -34,8 +34,7 @@ namespace Citrina.CallbackApi
 
         public CallbackEventType GetEventType(CallbackEvent e)
         {
-            CallbackEventType type;
-            if (!EventMap.TryGetValue(e.Type, out type))
+            if (!EventMap.TryGetValue(e.Type, out CallbackEventType type))
             {
                 return CallbackEventType.Undefined;
             }

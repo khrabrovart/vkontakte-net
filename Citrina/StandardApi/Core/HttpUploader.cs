@@ -44,7 +44,9 @@ namespace Citrina.StandardApi.Core
 
                     using (var response = await client.PostAsync(url, content).ConfigureAwait(false))
                     {
+#if NETSTANDARD1_3
                         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+#endif
                         var data = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         try

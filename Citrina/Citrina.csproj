@@ -1,10 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Configuration">
     <DocumentationFile>bin\Release\Citrina.xml</DocumentationFile>
     <OutputPath />
   </PropertyGroup>
+  
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFrameworks>netstandard1.3;net45;net46</TargetFrameworks>
     <PackageId>Citrina</PackageId>
     <Title>Citrina (VK API for .NET)</Title>
     <Summary>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Summary>
@@ -14,31 +15,40 @@
     <PackageProjectUrl>https://github.com/khrabrovart/Citrina</PackageProjectUrl>
     <Description>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>
-      Symbols and sources included in the package
-
-      Docs: https://github.com/khrabrovart/Citrina
-    </PackageReleaseNotes>
+    <PackageReleaseNotes>Added .NETFramework 4.5 and .NETFramework 4.6 support.
+Docs: https://github.com/khrabrovart/Citrina
+</PackageReleaseNotes>
     <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
     <PackageTags>vk api vkontakte vkapi</PackageTags>
-    <AssemblyVersion>2.4.0</AssemblyVersion>
-    <FileVersion>2.4.0</FileVersion>
-    <PackageVersion>2.4.0</PackageVersion>
-    <Version>2.4.0</Version>
-    <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE.md</PackageLicenseUrl>
+    <AssemblyVersion>2.5.0</AssemblyVersion>
+    <FileVersion>2.5.0</FileVersion>
+    <PackageVersion>2.5.0</PackageVersion>
+    <Version>2.5.0</Version>
+    <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <IncludeSource>True</IncludeSource>
     <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
+  
   <ItemGroup>
     <Compile Remove="obj\**" />
     <EmbeddedResource Remove="obj\**" />
     <None Remove="obj\**" />
   </ItemGroup>
-  <ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net46'">
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net46'">
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 </Project>
