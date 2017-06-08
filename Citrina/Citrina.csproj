@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Configuration">
-    <DocumentationFile>bin\Release\Citrina.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Citrina.xml</DocumentationFile>
     <OutputPath />
   </PropertyGroup>
   
@@ -8,22 +8,22 @@
     <TargetFrameworks>netstandard1.3;net45;net46</TargetFrameworks>
     <PackageId>Citrina</PackageId>
     <Title>Citrina (VK API for .NET)</Title>
-    <Summary>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Summary>
+    <Summary>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods.</Summary>
     <Authors>Khrabrov Arthur</Authors>
     <Owners>Khrabrov Arthur</Owners>
     <PackageIconUrl>https://s3.eu-central-1.amazonaws.com/vkcmgr.net/images/citrina1.png</PackageIconUrl>
     <PackageProjectUrl>https://github.com/khrabrovart/Citrina</PackageProjectUrl>
     <Description>Citrina is a first full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Added .NETFramework 4.5 and .NETFramework 4.6 support.
+    <PackageReleaseNotes>Fixed NewsfeedNewsfeedItem properties.
 Docs: https://github.com/khrabrovart/Citrina
 </PackageReleaseNotes>
     <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
-    <PackageTags>vk api vkontakte vkapi</PackageTags>
-    <AssemblyVersion>2.5.0</AssemblyVersion>
-    <FileVersion>2.5.0</FileVersion>
-    <PackageVersion>2.5.0</PackageVersion>
-    <Version>2.5.0</Version>
+    <PackageTags>vk api vkontakte vkapi VK API VKontakte VKAPI ВКонтакте ВК</PackageTags>
+    <AssemblyVersion>2.5.1</AssemblyVersion>
+    <FileVersion>2.5.1</FileVersion>
+    <PackageVersion>2.5.1</PackageVersion>
+    <Version>2.5.1</Version>
     <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
