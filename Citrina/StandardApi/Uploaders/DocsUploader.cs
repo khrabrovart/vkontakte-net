@@ -10,7 +10,7 @@ namespace Citrina.StandardApi.Uploaders
     {
         private const int FileSizeMbLimit = 200;
 
-        public async Task<UploadResponse<DocsDocUploadResponse>> UploadDocAsync(DocsGetUploadServerResponse server, string file)
+        public Task<UploadResponse<DocsDocUploadResponse>> UploadDocAsync(DocsGetUploadServerResponse server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -18,7 +18,7 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<DocsDocUploadResponse>(server.UploadUrl, new[] { file }, "file").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<DocsDocUploadResponse>(server.UploadUrl, new[] { file }, "file");
         }
 
         private void CheckFile(string file)

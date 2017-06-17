@@ -12,7 +12,7 @@ namespace Citrina.StandardApi.Uploaders
     {
         private readonly IEnumerable<string> Extensions = new[] { ".avi", ".mp4", ".3gp", ".mpeg", ".mov", ".mp3", ".flv", ".wmv" };
 
-        public async Task<UploadResponse<VideoUploadResponse>> UploadVideoAsync(VideoSaveResult server, string file)
+        public Task<UploadResponse<VideoUploadResponse>> UploadVideoAsync(VideoSaveResult server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -20,7 +20,7 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<VideoUploadResponse>(server.UploadUrl, new[] { file }, "video_file").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<VideoUploadResponse>(server.UploadUrl, new[] { file }, "video_file");
         }
 
         private void CheckFile(string file)

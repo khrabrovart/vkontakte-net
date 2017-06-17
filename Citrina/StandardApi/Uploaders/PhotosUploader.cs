@@ -17,7 +17,7 @@ namespace Citrina.StandardApi.Uploaders
 
         private readonly IEnumerable<string> Extensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
 
-        public async Task<UploadResponse<PhotosPhotoUploadResponse>> UploadAlbumPhotosAsync(PhotosPhotoUpload server, IEnumerable<string> files)
+        public Task<UploadResponse<PhotosPhotoUploadResponse>> UploadAlbumPhotosAsync(PhotosPhotoUpload server, IEnumerable<string> files)
         {
             if (files == null)
             {
@@ -34,10 +34,10 @@ namespace Citrina.StandardApi.Uploaders
                 CheckFile(file);
             }
 
-            return await HttpUploader.UploadAsync<PhotosPhotoUploadResponse>(server.UploadUrl, files, "file", true).ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosPhotoUploadResponse>(server.UploadUrl, files, "file", true);
         }
 
-        public async Task<UploadResponse<PhotosWallUploadResponse>> UploadWallPhotosAsync(PhotosPhotoUpload server, IEnumerable<string> files)
+        public Task<UploadResponse<PhotosWallUploadResponse>> UploadWallPhotosAsync(PhotosPhotoUpload server, IEnumerable<string> files)
         {
             if (files == null)
             {
@@ -54,10 +54,10 @@ namespace Citrina.StandardApi.Uploaders
                 CheckFile(file);
             }
 
-            return await HttpUploader.UploadAsync<PhotosWallUploadResponse>(server.UploadUrl, files, "photo").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosWallUploadResponse>(server.UploadUrl, files, "photo");
         }
 
-        public async Task<UploadResponse<PhotosOwnerUploadResponse>> UploadOwnerPhotoAsync(PhotosPhotoUpload server, string file)
+        public Task<UploadResponse<PhotosOwnerUploadResponse>> UploadOwnerPhotoAsync(PhotosPhotoUpload server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -65,10 +65,10 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<PhotosOwnerUploadResponse>(server.UploadUrl, new[] { file }, "photo").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosOwnerUploadResponse>(server.UploadUrl, new[] { file }, "photo");
         }
 
-        public async Task<UploadResponse<PhotosMessageUploadResponse>> UploadMessagePhotoAsync(PhotosPhotoUpload server, string file)
+        public Task<UploadResponse<PhotosMessageUploadResponse>> UploadMessagePhotoAsync(PhotosPhotoUpload server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -76,10 +76,10 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<PhotosMessageUploadResponse>(server.UploadUrl, new[] { file }, "photo").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosMessageUploadResponse>(server.UploadUrl, new[] { file }, "photo");
         }
 
-        public async Task<UploadResponse<PhotosPhotoUploadResponse>> UploadChatPhotoAsync(PhotosGetChatUploadServerResponse server, string file)
+        public Task<UploadResponse<PhotosPhotoUploadResponse>> UploadChatPhotoAsync(PhotosGetChatUploadServerResponse server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -87,10 +87,10 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<PhotosPhotoUploadResponse>(server.UploadUrl, new[] { file }, "file").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosPhotoUploadResponse>(server.UploadUrl, new[] { file }, "file");
         }
 
-        public async Task<UploadResponse<PhotosMarketUploadResponse>> UploadMarketPhotoAsync(PhotosGetMarketUploadServerResponse server, string file)
+        public Task<UploadResponse<PhotosMarketUploadResponse>> UploadMarketPhotoAsync(PhotosGetMarketUploadServerResponse server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -98,10 +98,10 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<PhotosMarketUploadResponse>(server.UploadUrl, new[] { file }, "file").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosMarketUploadResponse>(server.UploadUrl, new[] { file }, "file");
         }
 
-        public async Task<UploadResponse<PhotosMarketUploadResponse>> UploadMarketAlbumPhotoAsync(PhotosGetMarketAlbumUploadServerResponse server, string file)
+        public Task<UploadResponse<PhotosMarketUploadResponse>> UploadMarketAlbumPhotoAsync(PhotosGetMarketAlbumUploadServerResponse server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -109,7 +109,7 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<PhotosMarketUploadResponse>(server.UploadUrl, new[] { file }, "file").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<PhotosMarketUploadResponse>(server.UploadUrl, new[] { file }, "file");
         }
 
         private void CheckFile(string file)

@@ -12,7 +12,7 @@ namespace Citrina.StandardApi.Uploaders
     {
         private readonly IEnumerable<string> Extensions = new[] { ".mp3" };
 
-        public async Task<UploadResponse<AudioAudioUploadResponse>> UploadAudioAsync(AudioGetUploadServerResponse server, string file)
+        public Task<UploadResponse<AudioAudioUploadResponse>> UploadAudioAsync(AudioGetUploadServerResponse server, string file)
         {
             if (string.IsNullOrWhiteSpace(file))
             {
@@ -20,7 +20,7 @@ namespace Citrina.StandardApi.Uploaders
             }
 
             CheckFile(file);
-            return await HttpUploader.UploadAsync<AudioAudioUploadResponse>(server.UploadUrl, new[] { file }, "file").ConfigureAwait(false);
+            return HttpUploader.UploadAsync<AudioAudioUploadResponse>(server.UploadUrl, new[] { file }, "file");
         }
 
         private void CheckFile(string file)

@@ -11,9 +11,9 @@ namespace Citrina.StandardApi
 
     internal class ExecuteApi : IExecuteApi
     {
-        public async Task<ApiCall<ExecuteRequest, TResponse>> Call<TResponse>(string method, ExecuteRequest request)
+        public Task<ApiCall<ExecuteRequest, TResponse>> Call<TResponse>(string method, ExecuteRequest request)
         {
-            return await RequestManager.CreateRequestAsync<ExecuteRequest, TResponse>(method, request, true).ConfigureAwait(false);
+            return RequestManager.CreateRequestAsync<ExecuteRequest, TResponse>(method, request, true);
         }
     }
 }
