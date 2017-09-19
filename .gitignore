@@ -3,7 +3,9 @@ Citrina/bin/
 Citrina/obj/
 .sonarqube/
 .vs/
-Citrina.Uploader/bin/
-Citrina.Uploader/obj/
-Citrina.CallbackApi/obj/
-Citrina.CallbackApi/bin/
+src/Citrina.CallbackApi/bin/
+src/Citrina.CallbackApi/obj/
+src/Citrina.Uploader/bin/
+src/Citrina.Uploader/obj/
+src/Citrina/bin/
+src/Citrina/obj/
