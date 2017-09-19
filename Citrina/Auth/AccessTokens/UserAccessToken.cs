@@ -43,6 +43,12 @@ namespace Citrina
         public int ApplicationId { get; }
 
         /// <summary>
+        /// Indicates whether this access token is limited or not according to official VK documentation.
+        /// Requests with limited access tokens go through the queue.
+        /// </summary>
+        public bool IsLimited { get; } = true;
+
+        /// <summary>
         /// Indicates whether this access token is valid or not according to its expiration time.
         /// </summary>
         public bool IsValid => _lifetime.Equals(0) || ExpiresIn > 0;

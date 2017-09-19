@@ -1,19 +1,21 @@
 ﻿namespace Citrina
 {
     /// <summary>
-    /// Represents the VK service access token.
+    /// Represents the VK group access token.
     /// </summary>
-    public class ServiceAccessToken : IAccessToken
+    public class GroupAccessToken : IAccessToken
     {
         /// <summary>
-        /// Initializes a new instance of the AccessToken class that represents service access token for use in public API methods. 
-        /// Service access tokens has no user id and no time limit.
+        /// Initializes a new instance of the GroupAccessToken class that represents group access token. 
+        /// Group access tokens has no time limit.
         /// </summary>
         /// <param name="value">Access token value.</param>
+        /// <param name="groupId">Community identifier.</param>
         /// <param name="appId">Application identifier.</param>
-        public ServiceAccessToken(string value, int appId)
+        public GroupAccessToken(string value, int groupId, int appId)
         {
             Value = value;
+            GroupId = groupId;
             ApplicationId = appId;
         }
 
@@ -21,6 +23,11 @@
         /// Gets the access token value.
         /// </summary>
         public string Value { get; }
+
+        /// <summary>
+        /// Gets the group identifier.
+        /// </summary>
+        public int GroupId { get; }
 
         /// <summary>
         /// Gets the application identifier.
@@ -31,6 +38,6 @@
         /// Indicates whether this access token is limited or not according to official VK documentation.
         /// Requests with limited access tokens go through the queue.
         /// </summary>
-        public bool IsLimited { get; } = false;
+        public bool IsLimited { get; } = true;
     }
 }
