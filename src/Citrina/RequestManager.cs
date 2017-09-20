@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
@@ -29,7 +30,7 @@ namespace Citrina
         private static HttpClient _client;
         private static readonly ConcurrentDictionary<string, SemaphoreSlim> Queues = new ConcurrentDictionary<string, SemaphoreSlim>();
 
-        public static async Task<ApiRequest<TResponse>> CreateRequestAsync<TResponse>(string method, IAccessToken accessToken, object parameters)
+        public static async Task<ApiRequest<TResponse>> CreateRequestAsync<TResponse>(string method, IAccessToken accessToken, Dictionary<string, string> parameters)
         {
             if (parameters == null)
             {
@@ -45,7 +46,7 @@ namespace Citrina
             {
                 Method = method,
                 AccessToken = accessToken,
-                Parameters = CitrinaJsonConverter.Serialize<Dictionary<string, string>>(parameters)
+                Parameters = parameters.Where(p => p.Value != null).ToDictionary(k => k.Key, v => v.Value)
             };
 
             internalRequest.Parameters.Add("v", RequestSettings.ApiVersion);

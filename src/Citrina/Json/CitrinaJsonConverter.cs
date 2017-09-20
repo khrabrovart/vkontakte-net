@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace Citrina.Json
 {
+    /// <summary>
+    /// Provides methods for converting VK API response JSON to CLR objects.
+    /// </summary>
     public static class CitrinaJsonConverter
     {
         private static readonly JsonSerializerSettings DeserializerSettings = new JsonSerializerSettings
@@ -13,20 +16,6 @@ namespace Citrina.Json
             {
                 new UnixDateConverter(),
                 new BooleanConverter()
-            },
-            ContractResolver = new SnakeCaseContractResolver()
-        };
-
-        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
-        {
-            NullValueHandling = NullValueHandling.Ignore,
-            Converters =
-            {
-                new BooleanConverter(),
-                new UnixDateConverter(),
-                new AccessTokenConverter(),
-                new JsonArrayConverter(),
-                new EnumerableConverter()
             },
             ContractResolver = new SnakeCaseContractResolver()
         };
@@ -40,16 +29,5 @@ namespace Citrina.Json
         {
             return JsonConvert.DeserializeObject(data, type, DeserializerSettings);
         }
-
-        public static string Serialize(object obj)
-        {
-            return JsonConvert.SerializeObject(obj, Formatting.None, SerializerSettings);
-        }
-
-        public static T Serialize<T>(object obj)
-        {
-            var jsonRequest = JsonConvert.SerializeObject(obj, Formatting.None, SerializerSettings);
-            return JsonConvert.DeserializeObject<T>(jsonRequest);
-        } 
     }
 }

@@ -47,7 +47,8 @@ namespace Citrina.CallbackApi
         {
             try
             {
-                return CitrinaJsonConverter.Deserialize<T>(CitrinaJsonConverter.Serialize(e.Object));
+                //TODO: Need serialization
+                return CitrinaJsonConverter.Deserialize<T>(/*e.Object*/ null);
             }
             catch
             {

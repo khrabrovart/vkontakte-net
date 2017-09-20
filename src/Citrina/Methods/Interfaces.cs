@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Citrina
@@ -168,7 +169,7 @@ namespace Citrina
         /// <summary>
         /// Adds a new post on a user wall or community wall. Can also be used to publish suggested or scheduled posts.
         /// </summary>
-        Task<ApiRequest<WallPostResponse>> Post(UserAccessToken accessToken, int? ownerId = null, bool? friendsOnly = null, bool? fromGroup = null, string message = null, IEnumerable<string> attachments = null, string services = null, bool? signed = null, int? publishDate = null, double? lat = null, double? @long = null, int? placeId = null, int? postId = null, string guid = null, bool? markAsAds = null);
+        Task<ApiRequest<WallPostResponse>> Post(UserAccessToken accessToken, int? ownerId = null, bool? friendsOnly = null, bool? fromGroup = null, string message = null, IEnumerable<string> attachments = null, string services = null, bool? signed = null, DateTime? publishDate = null, double? lat = null, double? @long = null, int? placeId = null, int? postId = null, string guid = null, bool? markAsAds = null);
         /// <summary>
         /// Reposts (copies) an object to a user wall or community wall.
         /// </summary>
@@ -188,7 +189,7 @@ namespace Citrina
         /// <summary>
         /// Edits a post on a user wall or community wall.
         /// </summary>
-        Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? ownerId = null, int? postId = null, bool? friendsOnly = null, string message = null, IEnumerable<string> attachments = null, string services = null, bool? signed = null, int? publishDate = null, double? lat = null, double? @long = null, int? placeId = null, bool? markAsAds = null);
+        Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? ownerId = null, int? postId = null, bool? friendsOnly = null, string message = null, IEnumerable<string> attachments = null, string services = null, bool? signed = null, DateTime? publishDate = null, double? lat = null, double? @long = null, int? placeId = null, bool? markAsAds = null);
         /// <summary>
         /// Deletes a post from a user wall or community wall.
         /// </summary>
@@ -280,27 +281,27 @@ namespace Citrina
         /// <summary>
         /// Returns a list of a user's or community's photos.
         /// </summary>
-        Task<ApiRequest<PhotosGetResponse>> Get(UserAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, string feedType = null, int? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
+        Task<ApiRequest<PhotosGetResponse>> Get(UserAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, string feedType = null, DateTime? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of a user's or community's photos.
         /// </summary>
-        Task<ApiRequest<PhotosGetExtendedResponse>> GetExtended(UserAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, bool? extended = null, string feedType = null, int? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
+        Task<ApiRequest<PhotosGetExtendedResponse>> GetExtended(UserAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, bool? extended = null, string feedType = null, DateTime? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of a user's or community's photos.
         /// </summary>
-        Task<ApiRequest<PhotosGetResponse>> Get(int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, string feedType = null, int? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
+        Task<ApiRequest<PhotosGetResponse>> Get(int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, string feedType = null, DateTime? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of a user's or community's photos.
         /// </summary>
-        Task<ApiRequest<PhotosGetExtendedResponse>> GetExtended(int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, bool? extended = null, string feedType = null, int? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
+        Task<ApiRequest<PhotosGetExtendedResponse>> GetExtended(int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, bool? extended = null, string feedType = null, DateTime? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of a user's or community's photos.
         /// </summary>
-        Task<ApiRequest<PhotosGetResponse>> Get(ServiceAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, string feedType = null, int? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
+        Task<ApiRequest<PhotosGetResponse>> Get(ServiceAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, string feedType = null, DateTime? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of a user's or community's photos.
         /// </summary>
-        Task<ApiRequest<PhotosGetExtendedResponse>> GetExtended(ServiceAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, bool? extended = null, string feedType = null, int? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
+        Task<ApiRequest<PhotosGetExtendedResponse>> GetExtended(ServiceAccessToken accessToken, int? ownerId = null, string albumId = null, IEnumerable<string> photoIds = null, bool? rev = null, bool? extended = null, string feedType = null, DateTime? feed = null, bool? photoSizes = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns the number of photo albums belonging to a user or community.
         /// </summary>
@@ -680,7 +681,7 @@ namespace Citrina
         /// <summary>
         /// Shows a list of SMS notifications sent by the application using [vk.com/dev/secure.sendSMSNotification|secure.sendSMSNotification] method.
         /// </summary>
-        Task<ApiRequest<IEnumerable<SecureSmsNotification>>> GetSMSHistory(ServiceAccessToken accessToken, int? userId = null, int? dateFrom = null, int? dateTo = null, int? limit = null);
+        Task<ApiRequest<IEnumerable<SecureSmsNotification>>> GetSMSHistory(ServiceAccessToken accessToken, int? userId = null, DateTime? dateFrom = null, DateTime? dateTo = null, int? limit = null);
         /// <summary>
         /// Sends 'SMS' notification to a user's mobile device.
         /// </summary>
@@ -1045,7 +1046,7 @@ namespace Citrina
         /// <summary>
         /// Adds a user to a community blacklist.
         /// </summary>
-        Task<ApiRequest<bool?>> BanUser(UserAccessToken accessToken, int? groupId = null, int? userId = null, int? endDate = null, int? reason = null, string comment = null, bool? commentVisible = null);
+        Task<ApiRequest<bool?>> BanUser(UserAccessToken accessToken, int? groupId = null, int? userId = null, DateTime? endDate = null, int? reason = null, string comment = null, bool? commentVisible = null);
         /// <summary>
         /// Removes a user from a community blacklist.
         /// </summary>
@@ -1061,7 +1062,7 @@ namespace Citrina
         /// <summary>
         /// Edits a community.
         /// </summary>
-        Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? groupId = null, string title = null, string description = null, string screenName = null, int? access = null, string website = null, string subject = null, string email = null, string phone = null, string rss = null, int? eventStartDate = null, int? eventFinishDate = null, int? eventGroupId = null, int? publicCategory = null, int? publicSubcategory = null, string publicDate = null, int? wall = null, int? topics = null, int? photos = null, int? video = null, int? audio = null, bool? links = null, bool? events = null, bool? places = null, bool? contacts = null, int? docs = null, int? wiki = null, bool? messages = null, int? ageLimits = null, bool? market = null, bool? marketComments = null, IEnumerable<int?> marketCountry = null, IEnumerable<int?> marketCity = null, int? marketCurrency = null, int? marketContact = null, int? marketWiki = null, bool? obsceneFilter = null, bool? obsceneStopwords = null, IEnumerable<string> obsceneWords = null);
+        Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? groupId = null, string title = null, string description = null, string screenName = null, int? access = null, string website = null, string subject = null, string email = null, string phone = null, string rss = null, DateTime? eventStartDate = null, DateTime? eventFinishDate = null, int? eventGroupId = null, int? publicCategory = null, int? publicSubcategory = null, string publicDate = null, int? wall = null, int? topics = null, int? photos = null, int? video = null, int? audio = null, bool? links = null, bool? events = null, bool? places = null, bool? contacts = null, int? docs = null, int? wiki = null, bool? messages = null, int? ageLimits = null, bool? market = null, bool? marketComments = null, IEnumerable<int?> marketCountry = null, IEnumerable<int?> marketCity = null, int? marketCurrency = null, int? marketContact = null, int? marketWiki = null, bool? obsceneFilter = null, bool? obsceneStopwords = null, IEnumerable<string> obsceneWords = null);
         /// <summary>
         /// Edits the place in community.
         /// </summary>
@@ -1505,7 +1506,7 @@ namespace Citrina
         /// <summary>
         /// Returns a list of user check-ins at locations according to the set parameters.
         /// </summary>
-        Task<ApiRequest<PlacesGetCheckinsResponse>> GetCheckins(UserAccessToken accessToken, double? latitude = null, double? longitude = null, int? place = null, int? userId = null, int? offset = null, int? count = null, int? timestamp = null, bool? friendsOnly = null, bool? needPlaces = null);
+        Task<ApiRequest<PlacesGetCheckinsResponse>> GetCheckins(UserAccessToken accessToken, double? latitude = null, double? longitude = null, int? place = null, int? userId = null, DateTime? offset = null, DateTime? count = null, DateTime? timestamp = null, bool? friendsOnly = null, bool? needPlaces = null);
         /// <summary>
         /// Returns a list of all types of locations.
         /// </summary>
@@ -1625,11 +1626,11 @@ namespace Citrina
         /// <summary>
         /// Returns a list of the current user's private messages that match search criteria.
         /// </summary>
-        Task<ApiRequest<MessagesSearchResponse>> Search(UserAccessToken accessToken, string q = null, int? peerId = null, int? date = null, int? previewLength = null, int? offset = null, int? count = null);
+        Task<ApiRequest<MessagesSearchResponse>> Search(UserAccessToken accessToken, string q = null, int? peerId = null, DateTime? date = null, int? previewLength = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of the current user's private messages that match search criteria.
         /// </summary>
-        Task<ApiRequest<MessagesSearchResponse>> Search(GroupAccessToken accessToken, string q = null, int? peerId = null, int? date = null, int? previewLength = null, int? offset = null, int? count = null);
+        Task<ApiRequest<MessagesSearchResponse>> Search(GroupAccessToken accessToken, string q = null, int? peerId = null, DateTime? date = null, int? previewLength = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns message history for the specified user or group chat.
         /// </summary>
@@ -1813,19 +1814,19 @@ namespace Citrina
         /// <summary>
         /// Returns data required to show newsfeed for the current user.
         /// </summary>
-        Task<ApiRequest<NewsfeedGetResponse>> Get(UserAccessToken accessToken, IEnumerable<string> filters = null, bool? returnBanned = null, int? startTime = null, int? endTime = null, int? maxPhotos = null, IEnumerable<string> sourceIds = null, string startFrom = null, int? count = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedGetResponse>> Get(UserAccessToken accessToken, IEnumerable<string> filters = null, bool? returnBanned = null, DateTime? startTime = null, DateTime? endTime = null, int? maxPhotos = null, IEnumerable<string> sourceIds = null, string startFrom = null, int? count = null, IEnumerable<string> fields = null);
         /// <summary>
         /// , Returns a list of newsfeeds recommended to the current user.
         /// </summary>
-        Task<ApiRequest<NewsfeedGetRecommendedResponse>> GetRecommended(UserAccessToken accessToken, int? startTime = null, int? endTime = null, int? maxPhotos = null, string startFrom = null, int? count = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedGetRecommendedResponse>> GetRecommended(UserAccessToken accessToken, DateTime? startTime = null, DateTime? endTime = null, int? maxPhotos = null, string startFrom = null, int? count = null, IEnumerable<string> fields = null);
         /// <summary>
         /// Returns a list of comments in the current user's newsfeed.
         /// </summary>
-        Task<ApiRequest<NewsfeedGetCommentsResponse>> GetComments(UserAccessToken accessToken, int? count = null, IEnumerable<string> filters = null, string reposts = null, int? startTime = null, int? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedGetCommentsResponse>> GetComments(UserAccessToken accessToken, int? count = null, IEnumerable<string> filters = null, string reposts = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
         /// <summary>
         /// Returns a list of posts on user walls in which the current user is mentioned.
         /// </summary>
-        Task<ApiRequest<NewsfeedGetMentionsResponse>> GetMentions(UserAccessToken accessToken, int? ownerId = null, int? startTime = null, int? endTime = null, int? offset = null, int? count = null);
+        Task<ApiRequest<NewsfeedGetMentionsResponse>> GetMentions(UserAccessToken accessToken, int? ownerId = null, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? count = null);
         /// <summary>
         /// Returns a list of users and communities banned from the current user's newsfeed.
         /// </summary>
@@ -1853,19 +1854,19 @@ namespace Citrina
         /// <summary>
         /// Returns search results by statuses.
         /// </summary>
-        Task<ApiRequest<NewsfeedSearchResponse>> Search(UserAccessToken accessToken, string q = null, int? count = null, double? latitude = null, double? longitude = null, int? startTime = null, int? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedSearchResponse>> Search(UserAccessToken accessToken, string q = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
         /// <summary>
         /// Returns search results by statuses.
         /// </summary>
-        Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(UserAccessToken accessToken, string q = null, bool? extended = null, int? count = null, double? latitude = null, double? longitude = null, int? startTime = null, int? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(UserAccessToken accessToken, string q = null, bool? extended = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
         /// <summary>
         /// Returns search results by statuses.
         /// </summary>
-        Task<ApiRequest<NewsfeedSearchResponse>> Search(ServiceAccessToken accessToken, string q = null, int? count = null, double? latitude = null, double? longitude = null, int? startTime = null, int? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedSearchResponse>> Search(ServiceAccessToken accessToken, string q = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
         /// <summary>
         /// Returns search results by statuses.
         /// </summary>
-        Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(ServiceAccessToken accessToken, string q = null, bool? extended = null, int? count = null, double? latitude = null, double? longitude = null, int? startTime = null, int? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
+        Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(ServiceAccessToken accessToken, string q = null, bool? extended = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null);
         /// <summary>
         /// Returns a list of newsfeeds followed by the current user.
         /// </summary>
@@ -2070,7 +2071,7 @@ namespace Citrina
         /// <summary>
         /// Returns a list of notifications about other users' feedback to the current user's wall posts.
         /// </summary>
-        Task<ApiRequest<NotificationsGetResponse>> Get(UserAccessToken accessToken, int? count = null, string startFrom = null, IEnumerable<string> filters = null, int? startTime = null, int? endTime = null);
+        Task<ApiRequest<NotificationsGetResponse>> Get(UserAccessToken accessToken, int? count = null, string startFrom = null, IEnumerable<string> filters = null, DateTime? startTime = null, DateTime? endTime = null);
         /// <summary>
         /// Resets the counter of new notifications about other users' feedback to the current user's wall posts.
         /// </summary>
