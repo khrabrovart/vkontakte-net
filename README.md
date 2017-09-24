@@ -15,7 +15,7 @@ Citrina is a full-blown high-performance [VK (VKontakte) API](https://vk.com/dev
 
 
 ## Description 
-Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.62__.
+Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.67__.
 
 _Converter that parses the JSON schema and transforms it to C# code is not included in the current repo and will be published separately in the near future._
 
