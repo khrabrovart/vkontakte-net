@@ -2213,13 +2213,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<bool?>("friends.deleteList", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<int?>>> GetAppUsers()
+        public Task<ApiRequest<IEnumerable<int?>>> GetAppUsers(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<IEnumerable<int?>>("friends.getAppUsers", null, request);
+            return RequestManager.CreateRequestAsync<IEnumerable<int?>>("friends.getAppUsers", accessToken, request);
         }
 
         public Task<ApiRequest<IEnumerable<FriendsUserXtrPhone>>> GetByPhones(UserAccessToken accessToken, IEnumerable<string> phones = null, IEnumerable<string> fields = null)
@@ -2234,13 +2235,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<IEnumerable<FriendsUserXtrPhone>>("friends.getByPhones", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteAllRequests()
+        public Task<ApiRequest<bool?>> DeleteAllRequests(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<bool?>("friends.deleteAllRequests", null, request);
+            return RequestManager.CreateRequestAsync<bool?>("friends.deleteAllRequests", accessToken, request);
         }
 
         public Task<ApiRequest<FriendsGetSuggestionsResponse>> GetSuggestions(UserAccessToken accessToken, IEnumerable<string> filter = null, int? count = null, int? offset = null, IEnumerable<string> fields = null, string nameCase = null)
@@ -5281,13 +5283,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<PlacesGetCheckinsResponse>("places.getCheckins", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<PlacesTypes>>> GetTypes()
+        public Task<ApiRequest<IEnumerable<PlacesTypes>>> GetTypes(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<IEnumerable<PlacesTypes>>("places.getTypes", null, request);
+            return RequestManager.CreateRequestAsync<IEnumerable<PlacesTypes>>("places.getTypes", accessToken, request);
         }
 
     }
@@ -5328,13 +5331,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<bool?>("account.setOnline", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> SetOffline()
+        public Task<ApiRequest<bool?>> SetOffline(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<bool?>("account.setOffline", null, request);
+            return RequestManager.CreateRequestAsync<bool?>("account.setOffline", accessToken, request);
         }
 
         public Task<ApiRequest<AccountLookupResult>> LookupContacts(UserAccessToken accessToken, IEnumerable<string> contacts = null, string service = null, string mycontact = null, bool? returnAll = null, IEnumerable<string> fields = null)
@@ -5511,10 +5515,11 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<AccountChangePasswordResponse>("account.changePassword", accessToken, request);
         }
 
-        public Task<ApiRequest<AccountUserSettings>> GetProfileInfo()
+        public Task<ApiRequest<AccountUserSettings>> GetProfileInfo(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
             return RequestManager.CreateRequestAsync<AccountUserSettings>("account.getProfileInfo", null, request);
@@ -7130,13 +7135,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<NotificationsGetResponse>("notifications.get", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> MarkAsViewed()
+        public Task<ApiRequest<bool?>> MarkAsViewed(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<bool?>("notifications.markAsViewed", null, request);
+            return RequestManager.CreateRequestAsync<bool?>("notifications.markAsViewed", accessToken, request);
         }
 
     }
@@ -7157,13 +7163,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<IEnumerable<StatsPeriod>>("stats.get", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> TrackVisitor()
+        public Task<ApiRequest<bool?>> TrackVisitor(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<bool?>("stats.trackVisitor", null, request);
+            return RequestManager.CreateRequestAsync<bool?>("stats.trackVisitor", accessToken, request);
         }
 
         public Task<ApiRequest<IEnumerable<StatsWallpostStat>>> GetPostReach(UserAccessToken accessToken, int? ownerId = null, int? postId = null)
@@ -7322,13 +7329,14 @@ namespace Citrina.Methods
             return RequestManager.CreateRequestAsync<int?>("apps.sendRequest", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteAppRequests()
+        public Task<ApiRequest<bool?>> DeleteAppRequests(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<bool?>("apps.deleteAppRequests", null, request);
+            return RequestManager.CreateRequestAsync<bool?>("apps.deleteAppRequests", accessToken, request);
         }
 
         public Task<ApiRequest<AppsGetFriendsListResponse>> GetFriendsList(UserAccessToken accessToken, int? count = null, string type = null, IEnumerable<string> fields = null)
@@ -8203,13 +8211,14 @@ namespace Citrina.Methods
 
     internal class AdsApi : IAdsApi
     {
-        public Task<ApiRequest<IEnumerable<AdsAccount>>> GetAccounts()
+        public Task<ApiRequest<IEnumerable<AdsAccount>>> GetAccounts(UserAccessToken accessToken)
         {
             var request = new Dictionary<string, string>
             {
+                ["access_token"] = accessToken?.Value
             };
 
-            return RequestManager.CreateRequestAsync<IEnumerable<AdsAccount>>("ads.getAccounts", null, request);
+            return RequestManager.CreateRequestAsync<IEnumerable<AdsAccount>>("ads.getAccounts", accessToken, request);
         }
 
         public Task<ApiRequest<IEnumerable<AdsClient>>> GetClients(UserAccessToken accessToken, int? accountId = null)

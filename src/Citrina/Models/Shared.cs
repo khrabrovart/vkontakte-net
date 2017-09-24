@@ -4936,7 +4936,7 @@ namespace Citrina
         /// <summary>
         /// Place type title
         /// </summary>
-        public int? Title { get; set; }
+        public string Title { get; set; }
         /// <summary>
         /// URL of the place's icon
         /// </summary>

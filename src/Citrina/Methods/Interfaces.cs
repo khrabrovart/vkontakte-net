@@ -609,7 +609,7 @@ namespace Citrina
         /// <summary>
         /// Returns a list of IDs of the current user's friends who installed the application.
         /// </summary>
-        Task<ApiRequest<IEnumerable<int?>>> GetAppUsers();
+        Task<ApiRequest<IEnumerable<int?>>> GetAppUsers(UserAccessToken accessToken);
         /// <summary>
         /// Returns a list of the current user's friends whose phone numbers, validated or specified in a profile, are in a given list.
         /// </summary>
@@ -617,7 +617,7 @@ namespace Citrina
         /// <summary>
         /// Marks all incoming friend requests as viewed.
         /// </summary>
-        Task<ApiRequest<bool?>> DeleteAllRequests();
+        Task<ApiRequest<bool?>> DeleteAllRequests(UserAccessToken accessToken);
         /// <summary>
         /// Returns a list of profiles of users whom the current user may know.
         /// </summary>
@@ -1510,7 +1510,7 @@ namespace Citrina
         /// <summary>
         /// Returns a list of all types of locations.
         /// </summary>
-        Task<ApiRequest<IEnumerable<PlacesTypes>>> GetTypes();
+        Task<ApiRequest<IEnumerable<PlacesTypes>>> GetTypes(UserAccessToken accessToken);
     }
 
     public interface IAccountApi
@@ -1530,7 +1530,7 @@ namespace Citrina
         /// <summary>
         /// Marks a current user as offline.
         /// </summary>
-        Task<ApiRequest<bool?>> SetOffline();
+        Task<ApiRequest<bool?>> SetOffline(UserAccessToken accessToken);
         /// <summary>
         /// Allows to search the VK users using phone numbers, e-mail addresses and user IDs on other services.
         /// </summary>
@@ -1590,7 +1590,7 @@ namespace Citrina
         /// <summary>
         /// Returns the current account info.
         /// </summary>
-        Task<ApiRequest<AccountUserSettings>> GetProfileInfo();
+        Task<ApiRequest<AccountUserSettings>> GetProfileInfo(UserAccessToken accessToken);
         /// <summary>
         /// Edits current profile info.
         /// </summary>
@@ -2075,7 +2075,7 @@ namespace Citrina
         /// <summary>
         /// Resets the counter of new notifications about other users' feedback to the current user's wall posts.
         /// </summary>
-        Task<ApiRequest<bool?>> MarkAsViewed();
+        Task<ApiRequest<bool?>> MarkAsViewed(UserAccessToken accessToken);
     }
 
     public interface IStatsApi
@@ -2084,7 +2084,7 @@ namespace Citrina
         /// Returns statistics of a community or an application.
         /// </summary>
         Task<ApiRequest<IEnumerable<StatsPeriod>>> Get(UserAccessToken accessToken, int? groupId = null, int? appId = null, string dateFrom = null, string dateTo = null);
-        Task<ApiRequest<bool?>> TrackVisitor();
+        Task<ApiRequest<bool?>> TrackVisitor(UserAccessToken accessToken);
         /// <summary>
         /// Returns stats for a wall post.
         /// </summary>
@@ -2132,7 +2132,7 @@ namespace Citrina
         /// <summary>
         /// Deletes all request notifications from the current app.
         /// </summary>
-        Task<ApiRequest<bool?>> DeleteAppRequests();
+        Task<ApiRequest<bool?>> DeleteAppRequests(UserAccessToken accessToken);
         /// <summary>
         /// Creates friends list for requests and invites in current app.
         /// </summary>
@@ -2432,7 +2432,7 @@ namespace Citrina
         /// <summary>
         /// Returns a list of advertising accounts.
         /// </summary>
-        Task<ApiRequest<IEnumerable<AdsAccount>>> GetAccounts();
+        Task<ApiRequest<IEnumerable<AdsAccount>>> GetAccounts(UserAccessToken accessToken);
         /// <summary>
         /// Returns a list of advertising agency's clients.
         /// </summary>

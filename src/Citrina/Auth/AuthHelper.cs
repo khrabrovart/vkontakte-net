@@ -90,9 +90,9 @@ namespace Citrina
                 var response = await (await client.GetAsync(sb.ToString()).ConfigureAwait(false))
                     .Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                dynamic jobj = JObject.Parse(response);
+                var parsedResponse = JObject.Parse(response);
 
-                if (jobj.error != null)
+                if (parsedResponse["error"] != null)
                 {
                     return new CodeAuthRequest
                     {
