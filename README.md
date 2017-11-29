@@ -158,43 +158,33 @@ Read [official VK documentation](https://vk.com/dev/upload_files) for more infor
 
 For now let's try to upload some photos to an album.
 ```csharp
-var call = await client.Photos.GetUploadServer(new PhotoGetUploadServerRequest() { AccessToken = token, AlbumId = 23452345 });
+var albumId = 123123123;
+var serverRequest = await client.Photos.GetUploadServer(token, albumId);
 
-var upload = await client.Uploader.Photos.UploadAlbumPhotosAsync(call.Response, new[] { @"C:\photo.jpg", @"C:\citrina.png" });
-
-if (!upload.IsError)
+if (!serverRequest.IsError) 
 {
-   var result = await Client.Photos.Save(new SaveRequest
-   {
-      AccessToken = token,
-      AlbumId = upload.Data.AlbumId,
-      Caption = "citrina test",
-      Hash = upload.Data.Hash,
-      PhotosList = upload.Data.PhotosList,
-      Server = upload.Data.Server
-   });
+	var uploadRequest = await uploader.Photos.UploadAlbumPhotosAsync(serverRequest.Response, new[] 
+	{ 
+		@"C:\some_photo.png" 
+	});
+	
+	var saveRequest = await client.Photos.Save(token, albumId, null, uploadRequest.Data.Server, uploadRequest.Data.PhotosList, 
+		uploadRequest.Data.Hash, null, null, "My photo caption");
 }
 ```
 
-And now let's upload an audio.
+And now let's upload an owner photo for community.
+
 ```csharp
-var call = await Client.Audio.GetUploadServer(new AudioGetUploadServerRequest { AccessToken = token });
+var communityId = -111222333;
+var serverRequest = await client.Photos.GetOwnerPhotoUploadServer(token, communityId);
 
-var upload = await Client.Uploader.Audio.UploadAudioAsync(call.Response, @"C:\my_fav_song.mp3");
-
-if (!upload.IsError)
+if (!serverRequest.IsError)
 {
-   var result = await Client.Audio.Save(new AudioSaveRequest
-   {
-      AccessToken = token,
-      Hash = upload.Data.Hash,
-      Server = upload.Data.Server,
-      Audio = upload.Data.Audio,
-      Artist = "some artist",
-      Title = "some title"
-   });
+	var uploadRequest = await uploader.Photos.UploadOwnerPhotoAsync(serverRequest.Response, @"C:\comm_cover.jpg");
+	var saveRequest = await client.Photos.SaveOwnerPhoto(token, uploadRequest.Response.Server.ToString(), 
+		uploadRequest.Response.Hash, uploadRequest.Response.Photo);
 }
 ```
-
 
 ### To be continued...
