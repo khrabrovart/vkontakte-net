@@ -15,9 +15,9 @@ Citrina is a full-blown high-performance [VK (VKontakte) API](https://vk.com/dev
 
 
 ## Description 
-Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.62__.
+Citrina is a VK API wrapper for .NET framework. This realization uses an [official VK API JSON Schema](https://github.com/VKCOM/vk-api-schema) to keep all the request/response models and methods up to date. Using this schema __guarantees the correctness and completeness__ of the models that VK API actually supports. Current API version that described by VK API JSON Schema is __5.67__.
 
-_Converter that parses the JSON schema and transforms it to C# code is not included in the current repo and will be published separately in the near future._
+Converter that parses the JSON schema and transforms it to C# code published separately in [another repo](https://github.com/khrabrovart/VKApiSchemaParser).
 
 Moreover Citrina uses request queues to deal with high loads. Every request either puts in a queue or processes instantly depending on existence of an access token. Every access token has its own queue to maximize performance. This kind of logic prevents VK from returning the "Too many requests per second" error. 
 It is important when you need to process several requests at a time. There can be maximum 3 requests to API methods per second from a client according to the [official VK API documentation](https://vk.com/dev/api_requests). Citrina puts these requests in a queue and then processes them as fast as possible. All you need to do is to wait for responses to return.
