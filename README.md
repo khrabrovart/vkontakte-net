@@ -74,6 +74,13 @@ var client = new CitrinaClient();
 ```
 
 
+### Uploader
+Citrina is able to upload files to VK. Just install the [Citrina.Uploader](https://www.nuget.org/packages/Citrina.Uploader/) package and you are ready to go!
+```csharp
+var uploader = new CitrinaUploader();
+```
+
+
 ### Authentication Helpers
 To obtain a new token you can use special authentication helpers.
 
