@@ -1,11 +1,50 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Configuration">
+    <DocumentationFile>bin\Release\CitrinaUploader.xml</DocumentationFile>
+    <OutputPath />
+  </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net45;net46;netstandard1.3;netstandard2.0;netcoreapp1.0;netcoreapp2.0</TargetFrameworks>
+    <PackageId>Citrina.Uploader</PackageId>
+    <Title>Citrina.Uploader (VK API for .NET)</Title>
+    <Summary>Citrina is a full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods.</Summary>
+    <Authors>Khrabrov Arthur</Authors>
+    <Owners>Khrabrov Arthur</Owners>
+    <PackageIconUrl>https://s3.eu-central-1.amazonaws.com/vkcmgr.net/images/citrina1.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/khrabrovart/Citrina</PackageProjectUrl>
+    <Description>Citrina is a full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Description>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>
+      Uploader contains methods for uploading local files to the VKontakte social network.
+      Docs: https://github.com/khrabrovart/Citrina
+    </PackageReleaseNotes>
+    <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
+    <PackageTags>vk api vkontakte vkapi uploader</PackageTags>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Version>1.0.0</Version>
+    <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.4.0" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net45'">
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' OR '$(TargetFramework)' == 'net46'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>

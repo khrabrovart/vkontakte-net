@@ -4,6 +4,6 @@ namespace Citrina.Uploader
 {
     public interface IDocsUploader
     {
-        Task<UploadResponse<DocsDocUploadResponse>> UploadDocAsync(DocsGetUploadServerResponse server, string file);
+        Task<UploadRequest<DocsDocUploadResponse>> UploadDocAsync(DocsGetUploadServerResponse server, string file);
     }
 }

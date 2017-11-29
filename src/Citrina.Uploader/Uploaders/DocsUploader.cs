@@ -1,37 +1,19 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Citrina.Uploader
 {
     internal class DocsUploader : IDocsUploader
     {
-        private const int FileSizeMbLimit = 200;
+        private const long FileSizeLimit = 200 * 1024 * 1024;
 
-        public Task<UploadResponse<DocsDocUploadResponse>> UploadDocAsync(DocsGetUploadServerResponse server, string file)
+        public Task<UploadRequest<DocsDocUploadResponse>> UploadDocAsync(DocsGetUploadServerResponse server, string file)
         {
-            if (string.IsNullOrWhiteSpace(file))
+            FileChecker.Check(file, new FileCheckerOptions
             {
-                throw new ArgumentNullException(nameof(file));
-            }
+                FileSizeLimit = FileSizeLimit 
+            });
 
-            CheckFile(file);
             return HttpUploader.UploadAsync<DocsDocUploadResponse>(server.UploadUrl, new[] { file }, "file");
-        }
-
-        private void CheckFile(string file)
-        {
-            if (!File.Exists(file))
-            {
-                throw new ArgumentException($"File {file} does not exist.", nameof(file));
-            }
-
-            var info = new FileInfo(file);
-
-            if (info.Length / 1024 / 1024 > FileSizeMbLimit)
-            {
-                throw new ArgumentException($"File {file} has invalid size.", nameof(file));
-            }
         }
     }
 }

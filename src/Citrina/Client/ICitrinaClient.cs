@@ -46,14 +46,6 @@
         IAppsApi Apps { get; }
 
         /// <summary>
-        /// Gets methods to work with audio API.
-        /// <para>
-        /// Read more about audio API on official VK page https://vk.com/dev/audio
-        /// </para>
-        /// </summary>
-        //IAudioApi Audio { get; }
-
-        /// <summary>
         /// Gets methods to work with auth API.
         /// <para>
         /// Read more about auth API on official VK page https://vk.com/dev/auth

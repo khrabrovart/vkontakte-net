@@ -4127,6 +4127,9 @@ namespace Citrina
         /// Uploading hash
         /// </summary>
         public string Hash { get; set; }
+        public int? Mid { get; set; }
+        public string MessageCode { get; set; }
+        public int? ProfileAid { get; set; }
     }
 
     public class PhotosPhoto

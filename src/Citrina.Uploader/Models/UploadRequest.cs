@@ -1,8 +1,8 @@
 ﻿namespace Citrina.Uploader
 {
-    public class UploadResponse<T>
+    public class UploadRequest<T>
     {
-        public T Data { get; set; }
+        public T Response { get; set; }
         public string Error { get; set; }
         public bool IsError { get; set; }
     }

@@ -1,23 +1,24 @@
-﻿using System;
+﻿using Citrina.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using Citrina.Json;
 
 namespace Citrina.Uploader
 {
     internal static class HttpUploader
     {
-        public static async Task<UploadResponse<T>> UploadAsync<T>(string url, IEnumerable<string> files, string contentFieldName, bool incrementalFieldName = false)
+        public static async Task<UploadRequest<T>> UploadAsync<T>(string url, IEnumerable<string> files, string contentFieldName, bool incrementalFieldName = false)
         {
             var uploadingFiles = await GetFilesContentAsync(files).ConfigureAwait(false);
 
             if (uploadingFiles == null)
             {
-                return new UploadResponse<T>
+                return new UploadRequest<T>
                 {
                     IsError = true,
                     Error = "No content found."
@@ -42,21 +43,21 @@ namespace Citrina.Uploader
 
                     using (var response = await client.PostAsync(url, content).ConfigureAwait(false))
                     {
-#if NETSTANDARD1_3
+#if (!NET45)
                         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 #endif
                         var data = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                         try
                         {
-                            return new UploadResponse<T>
+                            return new UploadRequest<T>
                             {
-                                Data = CitrinaJsonConverter.Deserialize<T>(data)
+                                Response = CitrinaJsonConverter.Deserialize<T>(data)
                             };
                         }
                         catch (Exception e)
                         {
-                            return new UploadResponse<T>
+                            return new UploadRequest<T>
                             {
                                 IsError = true,
                                 Error = $"Error occured while uploading files: Type={e.GetType()}, Message={e.Message}"

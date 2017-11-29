@@ -4,6 +4,6 @@ namespace Citrina.Uploader
 {
     public interface IVideoUploader
     {
-        Task<UploadResponse<VideoUploadResponse>> UploadVideoAsync(VideoSaveResult server, string file);
+        Task<UploadRequest<VideoUploadResponse>> UploadVideoAsync(VideoSaveResult server, string file);
     }
 }

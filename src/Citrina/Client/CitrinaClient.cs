@@ -50,14 +50,6 @@ namespace Citrina
         public IAppsApi Apps { get; }
 
         /// <summary>
-        /// Gets methods to work with audio API.
-        /// <para>
-        /// Read more about audio API on official VK page https://vk.com/dev/audio
-        /// </para>
-        /// </summary>
-        //public IAudioApi Audio { get; }
-
-        /// <summary>
         /// Gets methods to work with auth API.
         /// <para>
         /// Read more about auth API on official VK page https://vk.com/dev/auth
@@ -310,9 +302,6 @@ namespace Citrina
             Account = new AccountApi();
             Ads = new AdsApi();
             Apps = new AppsApi();
-
-            //Что там с этим AudioApi
-            //Audio = new AudioApi();
             Auth = new AuthApi();
             Board = new BoardApi();
             Database = new DatabaseApi();
