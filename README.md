@@ -8,7 +8,7 @@ Citrina is a full-blown high-performance [VK (VKontakte) API](https://vk.com/dev
 	- [Access Tokens](https://github.com/khrabrovart/Citrina/blob/master/README.md#access-tokens)
     - [Client](https://github.com/khrabrovart/Citrina/blob/master/README.md#client)
     - [Authentication Helpers](https://github.com/khrabrovart/Citrina/blob/master/README.md#authentication-helpers)
-    - [Standard API](https://github.com/khrabrovart/Citrina/blob/master/README.md#standard-api)
+    - [Standard API](https://github.com/khrabrovart/Citrina/blob/master/README.md#working-with-api)
     - [Custom Execute Methods](https://github.com/khrabrovart/Citrina/blob/master/README.md#custom-execute-methods)
     - [File Uploading](https://github.com/khrabrovart/Citrina/blob/master/README.md#file-uploading)
 
