@@ -91,16 +91,16 @@ All methods are _async_ but they are named as they are named in VK.
 
 Try to call the __Wall.Get__ method to get some posts from your wall.
 ```csharp
-var call = await client.Wall.Get(token, ownerId: 7654321, count: 5);
+var request = await client.Wall.Get(token, ownerId: 7654321, count: 5);
 
-if (!call.IsError)
+if (!request.IsError)
 {
-   var posts = call.Response.Items;
-   var postsObtainedCount = call.Response.Count;
+   var posts = request.Response.Items;
+   var postsObtainedCount = request.Response.Count;
 }
 else
 {
-   var errorMessage = call.Error.Message;
+   var errorMessage = request.Error.Message;
 }
 ```
 
@@ -127,17 +127,17 @@ Method call (note that prefix _execute_ in the method name is not needed):
 ```csharp
 public async Task<ExecuteResponse> ExecuteMe(int communityOwnerId, UserAccessToken accessToken)
 {
-   var call = await client.Execute.Call<ExecuteResponse>("testMethod", new ExecuteRequest(accessToken, new Dictionary<string, object>
+   var request = await client.Execute.Call<ExecuteResponse>("testMethod", new ExecuteRequest(accessToken, new Dictionary<string, object>
    {
       ["ownerId"] = communityOwnerId
    }));
 
-   if (call.IsError)
+   if (request.IsError)
    {
-       throw new Exception($"Error has occured: {call.Error.Message}");
+       throw new Exception($"Error has occured: {request.Error.Message}");
    }
 
-   return call.Response;
+   return request.Response;
 }
 ```
 
