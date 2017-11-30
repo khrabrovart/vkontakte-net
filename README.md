@@ -143,7 +143,7 @@ public async Task<ExecuteResponse> ExecuteMe(int communityOwnerId, UserAccessTok
 
 ### File Uploading
 Citrina supports all kinds of file uploading in VK API. You can get an uploader from the [Citrina.Uploader](https://www.nuget.org/packages/Citrina.Uploader/) package.
-Read [official VK documentation](https://vk.com/dev/upload_files) for more information about file uploading.
+Read the [official VK documentation](https://vk.com/dev/upload_files) for more information about file uploading.
 
 For now let's try to upload some photos to an album.
 ```csharp
