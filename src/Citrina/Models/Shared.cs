@@ -3612,6 +3612,10 @@ namespace Citrina
         public NewsfeedItemNoteNotes Notes { get; set; }
         public NewsfeedItemAudioAudio Audio { get; set; }
         public NewsfeedItemVideoVideo Video { get; set; }
+        public string Type { get; set; }
+        public int? SourceId { get; set; }
+        public DateTime? Date { get; set; }
+        public bool? MarkedAsAds { get; set; }
     }
 
     public class NewsfeedNewsfeedNote

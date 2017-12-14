@@ -15,16 +15,16 @@
     <PackageProjectUrl>https://github.com/khrabrovart/Citrina</PackageProjectUrl>
     <Description>Citrina is a full-blown high-performance VK (VKontakte) API realization for .NET that offers full support of all existing methods. Docs: https://github.com/khrabrovart/Citrina </Description>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Citrina 3.0 is finally here! Even faster and even more powerful VK API for .NET
-    
-Docs: https://github.com/khrabrovart/Citrina
-</PackageReleaseNotes>
+    <PackageReleaseNotes>
+      Added NextFrom, Date, Type, SourceId, MarkedAsAds to Newsfeed.Get response
+      Docs: https://github.com/khrabrovart/Citrina
+    </PackageReleaseNotes>
     <Copyright>Copyright 2017 (C) Arthur Khrabrov. All rights reserved.</Copyright>
     <PackageTags>vk api vkontakte vkapi</PackageTags>
-    <AssemblyVersion>3.0.0</AssemblyVersion>
-    <FileVersion>3.0.0</FileVersion>
-    <PackageVersion>3.0.0</PackageVersion>
-    <Version>3.0.0</Version>
+    <AssemblyVersion>3.0.1</AssemblyVersion>
+    <FileVersion>3.0.1</FileVersion>
+    <PackageVersion>3.0.1</PackageVersion>
+    <Version>3.0.1</Version>
     <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
