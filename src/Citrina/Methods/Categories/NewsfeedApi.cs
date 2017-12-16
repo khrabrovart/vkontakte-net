@@ -7,7 +7,7 @@ namespace Citrina
     internal class NewsfeedApi : INewsfeedApi
     {
         // Verified response
-        public Task<ApiRequest<NewsfeedGetResponse>> Get(UserAccessToken accessToken, IEnumerable<string> filters = null, bool? returnBanned = null, DateTime? startTime = null, DateTime? endTime = null, int? maxPhotos = null, IEnumerable<string> sourceIds = null, string startFrom = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedGetResponse>> Get(UserAccessToken accessToken, IEnumerable<string> filters, bool? returnBanned, DateTime? startTime, DateTime? endTime, int? maxPhotos, IEnumerable<string> sourceIds, string startFrom, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -26,7 +26,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetResponse>("newsfeed.get", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetRecommendedResponse>> GetRecommended(UserAccessToken accessToken, DateTime? startTime = null, DateTime? endTime = null, int? maxPhotos = null, string startFrom = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedGetRecommendedResponse>> GetRecommended(UserAccessToken accessToken, DateTime? startTime, DateTime? endTime, int? maxPhotos, string startFrom, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -42,7 +42,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetRecommendedResponse>("newsfeed.getRecommended", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetCommentsResponse>> GetComments(UserAccessToken accessToken, int? count = null, IEnumerable<string> filters = null, string reposts = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedGetCommentsResponse>> GetComments(UserAccessToken accessToken, int? count, IEnumerable<string> filters, string reposts, DateTime? startTime, DateTime? endTime, string startFrom, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -59,7 +59,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetCommentsResponse>("newsfeed.getComments", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetMentionsResponse>> GetMentions(UserAccessToken accessToken, int? ownerId = null, DateTime? startTime = null, DateTime? endTime = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<NewsfeedGetMentionsResponse>> GetMentions(UserAccessToken accessToken, int? ownerId, DateTime? startTime, DateTime? endTime, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -74,7 +74,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetMentionsResponse>("newsfeed.getMentions", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetBannedResponse>> GetBanned(UserAccessToken accessToken, IEnumerable<string> fields = null, string nameCase = null)
+        public Task<ApiRequest<NewsfeedGetBannedResponse>> GetBanned(UserAccessToken accessToken, IEnumerable<string> fields, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -86,7 +86,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetBannedResponse>("newsfeed.getBanned", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetBannedExtendedResponse>> GetBannedExtended(UserAccessToken accessToken, bool? extended = null, IEnumerable<string> fields = null, string nameCase = null)
+        public Task<ApiRequest<NewsfeedGetBannedExtendedResponse>> GetBannedExtended(UserAccessToken accessToken, bool? extended, IEnumerable<string> fields, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -99,7 +99,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetBannedExtendedResponse>("newsfeed.getBanned", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> AddBan(UserAccessToken accessToken, IEnumerable<int?> userIds = null, IEnumerable<int?> groupIds = null)
+        public Task<ApiRequest<bool?>> AddBan(UserAccessToken accessToken, IEnumerable<int?> userIds, IEnumerable<int?> groupIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -111,7 +111,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("newsfeed.addBan", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteBan(UserAccessToken accessToken, IEnumerable<int?> userIds = null, IEnumerable<int?> groupIds = null)
+        public Task<ApiRequest<bool?>> DeleteBan(UserAccessToken accessToken, IEnumerable<int?> userIds, IEnumerable<int?> groupIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -123,7 +123,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("newsfeed.deleteBan", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> IgnoreItem(UserAccessToken accessToken, string type = null, int? ownerId = null, int? itemId = null)
+        public Task<ApiRequest<bool?>> IgnoreItem(UserAccessToken accessToken, string type, int? ownerId, int? itemId)
         {
             var request = new Dictionary<string, string>
             {
@@ -136,7 +136,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("newsfeed.ignoreItem", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> UnignoreItem(UserAccessToken accessToken, string type = null, int? ownerId = null, int? itemId = null)
+        public Task<ApiRequest<bool?>> UnignoreItem(UserAccessToken accessToken, string type, int? ownerId, int? itemId)
         {
             var request = new Dictionary<string, string>
             {
@@ -149,7 +149,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("newsfeed.unignoreItem", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedSearchResponse>> Search(UserAccessToken accessToken, string q = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedSearchResponse>> Search(UserAccessToken accessToken, string q, int? count, double? latitude, double? longitude, DateTime? startTime, DateTime? endTime, string startFrom, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -167,7 +167,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedSearchResponse>("newsfeed.search", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(UserAccessToken accessToken, string q = null, bool? extended = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(UserAccessToken accessToken, string q, bool? extended, int? count, double? latitude, double? longitude, DateTime? startTime, DateTime? endTime, string startFrom, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -186,7 +186,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedSearchExtendedResponse>("newsfeed.search", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedSearchResponse>> Search(ServiceAccessToken accessToken, string q = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedSearchResponse>> Search(ServiceAccessToken accessToken, string q, int? count, double? latitude, double? longitude, DateTime? startTime, DateTime? endTime, string startFrom, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -204,7 +204,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedSearchResponse>("newsfeed.search", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(ServiceAccessToken accessToken, string q = null, bool? extended = null, int? count = null, double? latitude = null, double? longitude = null, DateTime? startTime = null, DateTime? endTime = null, string startFrom = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedSearchExtendedResponse>> SearchExtended(ServiceAccessToken accessToken, string q, bool? extended, int? count, double? latitude, double? longitude, DateTime? startTime, DateTime? endTime, string startFrom, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -223,7 +223,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedSearchExtendedResponse>("newsfeed.search", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetListsResponse>> GetLists(UserAccessToken accessToken, IEnumerable<int?> listIds = null)
+        public Task<ApiRequest<NewsfeedGetListsResponse>> GetLists(UserAccessToken accessToken, IEnumerable<int?> listIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -234,7 +234,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetListsResponse>("newsfeed.getLists", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetListsExtendedResponse>> GetListsExtended(UserAccessToken accessToken, IEnumerable<int?> listIds = null, bool? extended = null)
+        public Task<ApiRequest<NewsfeedGetListsExtendedResponse>> GetListsExtended(UserAccessToken accessToken, IEnumerable<int?> listIds, bool? extended)
         {
             var request = new Dictionary<string, string>
             {
@@ -246,7 +246,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<NewsfeedGetListsExtendedResponse>("newsfeed.getLists", accessToken, request);
         }
 
-        public Task<ApiRequest<int?>> SaveList(UserAccessToken accessToken, int? listId = null, string title = null, IEnumerable<int?> sourceIds = null, bool? noReposts = null)
+        public Task<ApiRequest<int?>> SaveList(UserAccessToken accessToken, int? listId, string title, IEnumerable<int?> sourceIds, bool? noReposts)
         {
             var request = new Dictionary<string, string>
             {
@@ -260,7 +260,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<int?>("newsfeed.saveList", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteList(int? listId = null)
+        public Task<ApiRequest<bool?>> DeleteList(int? listId)
         {
             var request = new Dictionary<string, string>
             {
@@ -270,7 +270,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("newsfeed.deleteList", null, request);
         }
 
-        public Task<ApiRequest<bool?>> Unsubscribe(UserAccessToken accessToken, string type = null, int? ownerId = null, int? itemId = null)
+        public Task<ApiRequest<bool?>> Unsubscribe(UserAccessToken accessToken, string type, int? ownerId, int? itemId)
         {
             var request = new Dictionary<string, string>
             {
@@ -283,7 +283,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("newsfeed.unsubscribe", accessToken, request);
         }
 
-        public Task<ApiRequest<NewsfeedGetSuggestedSourcesResponse>> GetSuggestedSources(UserAccessToken accessToken, int? offset = null, int? count = null, bool? shuffle = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<NewsfeedGetSuggestedSourcesResponse>> GetSuggestedSources(UserAccessToken accessToken, int? offset, int? count, bool? shuffle, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {

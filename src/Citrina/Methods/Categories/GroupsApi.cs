@@ -6,7 +6,7 @@ namespace Citrina
 {
     internal class GroupsApi : IGroupsApi
     {
-        public Task<ApiRequest<bool?>> IsMember(UserAccessToken accessToken, string groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> IsMember(UserAccessToken accessToken, string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -18,7 +18,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(UserAccessToken accessToken, string groupId = null, int? userId = null, IEnumerable<int?> userIds = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(UserAccessToken accessToken, string groupId, int? userId, IEnumerable<int?> userIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -31,7 +31,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatus>>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(UserAccessToken accessToken, string groupId = null, int? userId = null, bool? extended = null)
+        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(UserAccessToken accessToken, string groupId, int? userId, bool? extended)
         {
             var request = new Dictionary<string, string>
             {
@@ -44,7 +44,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsIsMemberExtendedResponse>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(UserAccessToken accessToken, string groupId = null, int? userId = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(UserAccessToken accessToken, string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -56,7 +56,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatusFull>>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> IsMember(GroupAccessToken accessToken, string groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> IsMember(GroupAccessToken accessToken, string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -68,7 +68,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(GroupAccessToken accessToken, string groupId = null, int? userId = null, IEnumerable<int?> userIds = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(GroupAccessToken accessToken, string groupId, int? userId, IEnumerable<int?> userIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -81,7 +81,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatus>>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(GroupAccessToken accessToken, string groupId = null, int? userId = null, bool? extended = null)
+        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(GroupAccessToken accessToken, string groupId, int? userId, bool? extended)
         {
             var request = new Dictionary<string, string>
             {
@@ -94,7 +94,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsIsMemberExtendedResponse>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(GroupAccessToken accessToken, string groupId = null, int? userId = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(GroupAccessToken accessToken, string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -106,7 +106,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatusFull>>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> IsMember(string groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> IsMember(string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -117,7 +117,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.isMember", null, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(string groupId = null, int? userId = null, IEnumerable<int?> userIds = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(string groupId, int? userId, IEnumerable<int?> userIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -129,7 +129,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatus>>("groups.isMember", null, request);
         }
 
-        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(string groupId = null, int? userId = null, bool? extended = null)
+        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(string groupId, int? userId, bool? extended)
         {
             var request = new Dictionary<string, string>
             {
@@ -141,7 +141,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsIsMemberExtendedResponse>("groups.isMember", null, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(string groupId = null, int? userId = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -152,7 +152,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatusFull>>("groups.isMember", null, request);
         }
 
-        public Task<ApiRequest<bool?>> IsMember(ServiceAccessToken accessToken, string groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> IsMember(ServiceAccessToken accessToken, string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -164,7 +164,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(ServiceAccessToken accessToken, string groupId = null, int? userId = null, IEnumerable<int?> userIds = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatus>>> IsMemberUserIds(ServiceAccessToken accessToken, string groupId, int? userId, IEnumerable<int?> userIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -177,7 +177,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatus>>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(ServiceAccessToken accessToken, string groupId = null, int? userId = null, bool? extended = null)
+        public Task<ApiRequest<GroupsIsMemberExtendedResponse>> IsMemberExtended(ServiceAccessToken accessToken, string groupId, int? userId, bool? extended)
         {
             var request = new Dictionary<string, string>
             {
@@ -190,7 +190,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsIsMemberExtendedResponse>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(ServiceAccessToken accessToken, string groupId = null, int? userId = null)
+        public Task<ApiRequest<IEnumerable<GroupsMemberStatusFull>>> IsMemberUserIdsExtended(ServiceAccessToken accessToken, string groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -202,7 +202,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsMemberStatusFull>>("groups.isMember", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(UserAccessToken accessToken, IEnumerable<string> groupIds = null, string groupId = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(UserAccessToken accessToken, IEnumerable<string> groupIds, string groupId, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -215,7 +215,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsGroupFull>>("groups.getById", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(GroupAccessToken accessToken, IEnumerable<string> groupIds = null, string groupId = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(GroupAccessToken accessToken, IEnumerable<string> groupIds, string groupId, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -228,7 +228,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsGroupFull>>("groups.getById", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(IEnumerable<string> groupIds = null, string groupId = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(IEnumerable<string> groupIds, string groupId, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -240,7 +240,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsGroupFull>>("groups.getById", null, request);
         }
 
-        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(ServiceAccessToken accessToken, IEnumerable<string> groupIds = null, string groupId = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<IEnumerable<GroupsGroupFull>>> GetById(ServiceAccessToken accessToken, IEnumerable<string> groupIds, string groupId, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -253,7 +253,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<GroupsGroupFull>>("groups.getById", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetResponse>> Get(UserAccessToken accessToken, int? userId = null, IEnumerable<string> filter = null, IEnumerable<string> fields = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetResponse>> Get(UserAccessToken accessToken, int? userId, IEnumerable<string> filter, IEnumerable<string> fields, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -268,7 +268,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetResponse>("groups.get", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetExtendedResponse>> GetExtended(UserAccessToken accessToken, int? userId = null, bool? extended = null, IEnumerable<string> filter = null, IEnumerable<string> fields = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetExtendedResponse>> GetExtended(UserAccessToken accessToken, int? userId, bool? extended, IEnumerable<string> filter, IEnumerable<string> fields, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -284,7 +284,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetExtendedResponse>("groups.get", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(UserAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(UserAccessToken accessToken, string groupId, string sort, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -298,7 +298,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(UserAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(UserAccessToken accessToken, string groupId, string sort, int? offset, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -313,7 +313,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFieldsResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(UserAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null, string filter = null)
+        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(UserAccessToken accessToken, string groupId, string sort, int? offset, int? count, string filter)
         {
             var request = new Dictionary<string, string>
             {
@@ -328,7 +328,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFilterResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(GroupAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(GroupAccessToken accessToken, string groupId, string sort, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -342,7 +342,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(GroupAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(GroupAccessToken accessToken, string groupId, string sort, int? offset, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -357,7 +357,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFieldsResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(GroupAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null, string filter = null)
+        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(GroupAccessToken accessToken, string groupId, string sort, int? offset, int? count, string filter)
         {
             var request = new Dictionary<string, string>
             {
@@ -372,7 +372,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFilterResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(string groupId = null, string sort = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(string groupId, string sort, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -385,7 +385,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersResponse>("groups.getMembers", null, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(string groupId = null, string sort = null, int? offset = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(string groupId, string sort, int? offset, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -399,7 +399,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFieldsResponse>("groups.getMembers", null, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(string groupId = null, string sort = null, int? offset = null, int? count = null, string filter = null)
+        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(string groupId, string sort, int? offset, int? count, string filter)
         {
             var request = new Dictionary<string, string>
             {
@@ -413,7 +413,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFilterResponse>("groups.getMembers", null, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(ServiceAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetMembersResponse>> GetMembers(ServiceAccessToken accessToken, string groupId, string sort, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -427,7 +427,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(ServiceAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<GroupsGetMembersFieldsResponse>> GetMembersFields(ServiceAccessToken accessToken, string groupId, string sort, int? offset, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -442,7 +442,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFieldsResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(ServiceAccessToken accessToken, string groupId = null, string sort = null, int? offset = null, int? count = null, string filter = null)
+        public Task<ApiRequest<GroupsGetMembersFilterResponse>> GetMembersFilter(ServiceAccessToken accessToken, string groupId, string sort, int? offset, int? count, string filter)
         {
             var request = new Dictionary<string, string>
             {
@@ -457,7 +457,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetMembersFilterResponse>("groups.getMembers", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> Join(UserAccessToken accessToken, int? groupId = null, string notSure = null)
+        public Task<ApiRequest<bool?>> Join(UserAccessToken accessToken, int? groupId, string notSure)
         {
             var request = new Dictionary<string, string>
             {
@@ -469,7 +469,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.join", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> Leave(UserAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<bool?>> Leave(UserAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -480,7 +480,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.leave", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsSearchResponse>> Search(UserAccessToken accessToken, string q = null, string type = null, int? countryId = null, int? cityId = null, bool? future = null, bool? market = null, int? sort = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsSearchResponse>> Search(UserAccessToken accessToken, string q, string type, int? countryId, int? cityId, bool? future, bool? market, int? sort, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -499,7 +499,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsSearchResponse>("groups.search", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCatalogResponse>> GetCatalog(UserAccessToken accessToken, int? categoryId = null, int? subcategoryId = null)
+        public Task<ApiRequest<GroupsGetCatalogResponse>> GetCatalog(UserAccessToken accessToken, int? categoryId, int? subcategoryId)
         {
             var request = new Dictionary<string, string>
             {
@@ -511,7 +511,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCatalogResponse>("groups.getCatalog", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCatalogInfoResponse>> GetCatalogInfo(UserAccessToken accessToken, bool? subcategories = null)
+        public Task<ApiRequest<GroupsGetCatalogInfoResponse>> GetCatalogInfo(UserAccessToken accessToken, bool? subcategories)
         {
             var request = new Dictionary<string, string>
             {
@@ -522,7 +522,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCatalogInfoResponse>("groups.getCatalogInfo", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCatalogInfoExtendedResponse>> GetCatalogInfoExtended(UserAccessToken accessToken, bool? extended = null, bool? subcategories = null)
+        public Task<ApiRequest<GroupsGetCatalogInfoExtendedResponse>> GetCatalogInfoExtended(UserAccessToken accessToken, bool? extended, bool? subcategories)
         {
             var request = new Dictionary<string, string>
             {
@@ -534,7 +534,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCatalogInfoExtendedResponse>("groups.getCatalogInfo", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetInvitesResponse>> GetInvites(UserAccessToken accessToken, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetInvitesResponse>> GetInvites(UserAccessToken accessToken, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -546,7 +546,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetInvitesResponse>("groups.getInvites", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetInvitesExtendedResponse>> GetInvitesExtended(UserAccessToken accessToken, int? offset = null, int? count = null, bool? extended = null)
+        public Task<ApiRequest<GroupsGetInvitesExtendedResponse>> GetInvitesExtended(UserAccessToken accessToken, int? offset, int? count, bool? extended)
         {
             var request = new Dictionary<string, string>
             {
@@ -559,7 +559,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetInvitesExtendedResponse>("groups.getInvites", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetInvitedUsersResponse>> GetInvitedUsers(UserAccessToken accessToken, int? groupId = null, int? offset = null, int? count = null, IEnumerable<string> fields = null, string nameCase = null)
+        public Task<ApiRequest<GroupsGetInvitedUsersResponse>> GetInvitedUsers(UserAccessToken accessToken, int? groupId, int? offset, int? count, IEnumerable<string> fields, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -574,7 +574,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetInvitedUsersResponse>("groups.getInvitedUsers", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> BanUser(UserAccessToken accessToken, int? groupId = null, int? userId = null, DateTime? endDate = null, int? reason = null, string comment = null, bool? commentVisible = null)
+        public Task<ApiRequest<bool?>> BanUser(UserAccessToken accessToken, int? groupId, int? userId, DateTime? endDate, int? reason, string comment, bool? commentVisible)
         {
             var request = new Dictionary<string, string>
             {
@@ -590,7 +590,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.banUser", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> UnbanUser(UserAccessToken accessToken, int? groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> UnbanUser(UserAccessToken accessToken, int? groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -602,7 +602,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.unbanUser", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetBannedResponse>> GetBanned(UserAccessToken accessToken, int? groupId = null, int? offset = null, int? count = null, IEnumerable<string> fields = null, int? userId = null)
+        public Task<ApiRequest<GroupsGetBannedResponse>> GetBanned(UserAccessToken accessToken, int? groupId, int? offset, int? count, IEnumerable<string> fields, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -617,7 +617,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetBannedResponse>("groups.getBanned", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGroup>> Create(UserAccessToken accessToken, string title = null, string description = null, string type = null, int? publicCategory = null, int? subtype = null)
+        public Task<ApiRequest<GroupsGroup>> Create(UserAccessToken accessToken, string title, string description, string type, int? publicCategory, int? subtype)
         {
             var request = new Dictionary<string, string>
             {
@@ -632,7 +632,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGroup>("groups.create", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? groupId = null, string title = null, string description = null, string screenName = null, int? access = null, string website = null, string subject = null, string email = null, string phone = null, string rss = null, DateTime? eventStartDate = null, DateTime? eventFinishDate = null, int? eventGroupId = null, int? publicCategory = null, int? publicSubcategory = null, string publicDate = null, int? wall = null, int? topics = null, int? photos = null, int? video = null, int? audio = null, bool? links = null, bool? events = null, bool? places = null, bool? contacts = null, int? docs = null, int? wiki = null, bool? messages = null, int? ageLimits = null, bool? market = null, bool? marketComments = null, IEnumerable<int?> marketCountry = null, IEnumerable<int?> marketCity = null, int? marketCurrency = null, int? marketContact = null, int? marketWiki = null, bool? obsceneFilter = null, bool? obsceneStopwords = null, IEnumerable<string> obsceneWords = null)
+        public Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? groupId, string title, string description, string screenName, int? access, string website, string subject, string email, string phone, string rss, DateTime? eventStartDate, DateTime? eventFinishDate, int? eventGroupId, int? publicCategory, int? publicSubcategory, string publicDate, int? wall, int? topics, int? photos, int? video, int? audio, bool? links, bool? events, bool? places, bool? contacts, int? docs, int? wiki, bool? messages, int? ageLimits, bool? market, bool? marketComments, IEnumerable<int?> marketCountry, IEnumerable<int?> marketCity, int? marketCurrency, int? marketContact, int? marketWiki, bool? obsceneFilter, bool? obsceneStopwords, IEnumerable<string> obsceneWords)
         {
             var request = new Dictionary<string, string>
             {
@@ -681,7 +681,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.edit", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsEditPlaceResponse>> EditPlace(UserAccessToken accessToken, int? groupId = null, string title = null, string address = null, int? countryId = null, int? cityId = null, double? latitude = null, double? longitude = null)
+        public Task<ApiRequest<GroupsEditPlaceResponse>> EditPlace(UserAccessToken accessToken, int? groupId, string title, string address, int? countryId, int? cityId, double? latitude, double? longitude)
         {
             var request = new Dictionary<string, string>
             {
@@ -698,7 +698,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsEditPlaceResponse>("groups.editPlace", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGroupSettings>> GetSettings(UserAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<GroupsGroupSettings>> GetSettings(UserAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -709,7 +709,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGroupSettings>("groups.getSettings", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetRequestsResponse>> GetRequests(UserAccessToken accessToken, int? groupId = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<GroupsGetRequestsResponse>> GetRequests(UserAccessToken accessToken, int? groupId, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -722,7 +722,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetRequestsResponse>("groups.getRequests", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetRequestsFieldsResponse>> GetRequestsFields(UserAccessToken accessToken, int? groupId = null, int? offset = null, int? count = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<GroupsGetRequestsFieldsResponse>> GetRequestsFields(UserAccessToken accessToken, int? groupId, int? offset, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -736,7 +736,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetRequestsFieldsResponse>("groups.getRequests", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> EditManager(UserAccessToken accessToken, int? groupId = null, int? userId = null, string role = null, bool? isContact = null, string contactPosition = null, string contactPhone = null, string contactEmail = null)
+        public Task<ApiRequest<bool?>> EditManager(UserAccessToken accessToken, int? groupId, int? userId, string role, bool? isContact, string contactPosition, string contactPhone, string contactEmail)
         {
             var request = new Dictionary<string, string>
             {
@@ -753,7 +753,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.editManager", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> Invite(UserAccessToken accessToken, int? groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> Invite(UserAccessToken accessToken, int? groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -765,7 +765,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.invite", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> AddLink(UserAccessToken accessToken, int? groupId = null, string link = null, string text = null)
+        public Task<ApiRequest<bool?>> AddLink(UserAccessToken accessToken, int? groupId, string link, string text)
         {
             var request = new Dictionary<string, string>
             {
@@ -778,7 +778,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.addLink", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteLink(UserAccessToken accessToken, int? groupId = null, int? linkId = null)
+        public Task<ApiRequest<bool?>> DeleteLink(UserAccessToken accessToken, int? groupId, int? linkId)
         {
             var request = new Dictionary<string, string>
             {
@@ -790,7 +790,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.deleteLink", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> EditLink(UserAccessToken accessToken, int? groupId = null, int? linkId = null, string text = null)
+        public Task<ApiRequest<bool?>> EditLink(UserAccessToken accessToken, int? groupId, int? linkId, string text)
         {
             var request = new Dictionary<string, string>
             {
@@ -803,7 +803,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.editLink", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> ReorderLink(UserAccessToken accessToken, int? groupId = null, int? linkId = null, int? after = null)
+        public Task<ApiRequest<bool?>> ReorderLink(UserAccessToken accessToken, int? groupId, int? linkId, int? after)
         {
             var request = new Dictionary<string, string>
             {
@@ -816,7 +816,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.reorderLink", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> RemoveUser(UserAccessToken accessToken, int? groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> RemoveUser(UserAccessToken accessToken, int? groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -828,7 +828,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.removeUser", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> ApproveRequest(UserAccessToken accessToken, int? groupId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> ApproveRequest(UserAccessToken accessToken, int? groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -840,7 +840,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.approveRequest", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCallbackConfirmationCodeResponse>> GetCallbackConfirmationCode(UserAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<GroupsGetCallbackConfirmationCodeResponse>> GetCallbackConfirmationCode(UserAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -851,7 +851,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCallbackConfirmationCodeResponse>("groups.getCallbackConfirmationCode", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCallbackConfirmationCodeResponse>> GetCallbackConfirmationCode(GroupAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<GroupsGetCallbackConfirmationCodeResponse>> GetCallbackConfirmationCode(GroupAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -862,7 +862,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCallbackConfirmationCodeResponse>("groups.getCallbackConfirmationCode", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCallbackServerSettingsResponse>> GetCallbackServerSettings(UserAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<GroupsGetCallbackServerSettingsResponse>> GetCallbackServerSettings(UserAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -873,7 +873,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCallbackServerSettingsResponse>("groups.getCallbackServerSettings", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsGetCallbackServerSettingsResponse>> GetCallbackServerSettings(GroupAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<GroupsGetCallbackServerSettingsResponse>> GetCallbackServerSettings(GroupAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -910,7 +910,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCallbackSettingsResponse>("groups.getCallbackSettings", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsSetCallbackServerResponse>> SetCallbackServer(UserAccessToken accessToken, int? groupId = null, string serverUrl = null)
+        public Task<ApiRequest<GroupsSetCallbackServerResponse>> SetCallbackServer(UserAccessToken accessToken, int? groupId, string serverUrl)
         {
             var request = new Dictionary<string, string>
             {
@@ -922,7 +922,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsSetCallbackServerResponse>("groups.setCallbackServer", accessToken, request);
         }
 
-        public Task<ApiRequest<GroupsSetCallbackServerResponse>> SetCallbackServer(GroupAccessToken accessToken, int? groupId = null, string serverUrl = null)
+        public Task<ApiRequest<GroupsSetCallbackServerResponse>> SetCallbackServer(GroupAccessToken accessToken, int? groupId, string serverUrl)
         {
             var request = new Dictionary<string, string>
             {
@@ -934,7 +934,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsSetCallbackServerResponse>("groups.setCallbackServer", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> SetCallbackServerSettings(UserAccessToken accessToken, int? groupId = null, string secretKey = null)
+        public Task<ApiRequest<bool?>> SetCallbackServerSettings(UserAccessToken accessToken, int? groupId, string secretKey)
         {
             var request = new Dictionary<string, string>
             {
@@ -946,7 +946,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.setCallbackServerSettings", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> SetCallbackServerSettings(GroupAccessToken accessToken, int? groupId = null, string secretKey = null)
+        public Task<ApiRequest<bool?>> SetCallbackServerSettings(GroupAccessToken accessToken, int? groupId, string secretKey)
         {
             var request = new Dictionary<string, string>
             {

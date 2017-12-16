@@ -7,12 +7,7 @@ namespace Citrina.Json.Converters
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            var val = value as bool?;
-
-            if (val != null)
-            {
-                writer.WriteValue(val.Value ? 1 : 0);
-            }
+            throw new NotImplementedException();
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

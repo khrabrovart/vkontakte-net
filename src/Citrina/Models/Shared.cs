@@ -1210,7 +1210,8 @@ namespace Citrina
         /// <summary>
         /// Information whether current user can comment the post
         /// </summary>
-        public int? CanPost { get; set; }
+        public bool? CanPost { get; set; }
+        public bool? GroupsCanPost { get; set; }
     }
 
     public class BaseCountry
@@ -6827,6 +6828,8 @@ namespace Citrina
         /// Date of publishing in Unixtime
         /// </summary>
         public DateTime? Date { get; set; }
+        public bool? MarkedAsAds { get; set; }
+
         /// <summary>
         /// Count of views
         /// </summary>
@@ -6925,7 +6928,7 @@ namespace Citrina
         /// <summary>
         /// Information whether current user can edit the post
         /// </summary>
-        public int? CanEdit { get; set; }
+        public bool? CanEdit { get; set; }
         /// <summary>
         /// Post creator ID (if post still can be edited)
         /// </summary>
@@ -6933,15 +6936,15 @@ namespace Citrina
         /// <summary>
         /// Information whether current user can delete the post
         /// </summary>
-        public int? CanDelete { get; set; }
+        public bool? CanDelete { get; set; }
         /// <summary>
         /// Information whether current user can pin the post
         /// </summary>
-        public int? CanPin { get; set; }
+        public bool? CanPin { get; set; }
         /// <summary>
         /// Information whether the post is pinned
         /// </summary>
-        public int? IsPinned { get; set; }
+        public bool? IsPinned { get; set; }
         public BaseCommentsInfo Comments { get; set; }
         public BaseLikesInfo Likes { get; set; }
         public BaseRepostsInfo Reposts { get; set; }

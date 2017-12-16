@@ -54,14 +54,45 @@ namespace Citrina
         /// Returns media files from the dialog or group chat.
         /// </summary>
         Task<ApiRequest<MessagesGetHistoryAttachmentsResponse>> GetHistoryAttachments(GroupAccessToken accessToken, int? peerId = null, string mediaType = null, string startFrom = null, int? count = null, bool? photoSizes = null, IEnumerable<string> fields = null);
+        
         /// <summary>
         /// Sends a message.
         /// </summary>
-        Task<ApiRequest<int?>> Send(UserAccessToken accessToken, int? userId = null, int? randomId = null, int? peerId = null, string domain = null, int? chatId = null, IEnumerable<int?> userIds = null, string message = null, double? lat = null, double? @long = null, string attachment = null, string forwardMessages = null, int? stickerId = null, bool? notification = null);
+        Task<ApiRequest<int?>> Send(
+            UserAccessToken accessToken,
+            int? userId = null,
+            int? randomId = null,
+            int? peerId = null,
+            string domain = null,
+            int? chatId = null,
+            IEnumerable<int?> userIds = null,
+            string message = null,
+            double? lat = null,
+            double? @long = null,
+            string attachment = null,
+            string forwardMessages = null,
+            int? stickerId = null,
+            bool? notification = null);
+        
         /// <summary>
         /// Sends a message.
         /// </summary>
-        Task<ApiRequest<int?>> Send(GroupAccessToken accessToken, int? userId = null, int? randomId = null, int? peerId = null, string domain = null, int? chatId = null, IEnumerable<int?> userIds = null, string message = null, double? lat = null, double? @long = null, string attachment = null, string forwardMessages = null, int? stickerId = null, bool? notification = null);
+        Task<ApiRequest<int?>> Send(
+            GroupAccessToken accessToken,
+            int? userId = null,
+            int? randomId = null,
+            int? peerId = null,
+            string domain = null,
+            int? chatId = null,
+            IEnumerable<int?> userIds = null,
+            string message = null,
+            double? lat = null,
+            double? @long = null,
+            string attachment = null,
+            string forwardMessages = null,
+            int? stickerId = null,
+            bool? notification = null);
+        
         /// <summary>
         /// Deletes one or more messages.
         /// </summary>

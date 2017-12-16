@@ -387,565 +387,6 @@ namespace Citrina.Methods
 
     }
 
-    internal class WallApi : IWallApi
-    {
-        public Task<ApiRequest<WallGetResponse>> Get(UserAccessToken accessToken, int? ownerId = null, string domain = null, int? offset = null, int? count = null, string filter = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["filter"] = filter,
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetResponse>("wall.get", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetExtendedResponse>> GetExtended(UserAccessToken accessToken, int? ownerId = null, string domain = null, int? offset = null, int? count = null, string filter = null, bool? extended = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["filter"] = filter,
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetExtendedResponse>("wall.get", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetResponse>> Get(ServiceAccessToken accessToken, int? ownerId = null, string domain = null, int? offset = null, int? count = null, string filter = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["filter"] = filter,
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetResponse>("wall.get", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetExtendedResponse>> GetExtended(ServiceAccessToken accessToken, int? ownerId = null, string domain = null, int? offset = null, int? count = null, string filter = null, bool? extended = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["filter"] = filter,
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetExtendedResponse>("wall.get", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallSearchResponse>> Search(UserAccessToken accessToken, int? ownerId = null, string domain = null, string query = null, bool? ownersOnly = null, int? count = null, int? offset = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["query"] = query,
-                ["owners_only"] = RequestHelpers.ParseBoolean(ownersOnly),
-                ["count"] = count?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallSearchResponse>("wall.search", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallSearchExtendedResponse>> SearchExtended(UserAccessToken accessToken, int? ownerId = null, string domain = null, string query = null, bool? ownersOnly = null, int? count = null, int? offset = null, bool? extended = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["query"] = query,
-                ["owners_only"] = RequestHelpers.ParseBoolean(ownersOnly),
-                ["count"] = count?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallSearchExtendedResponse>("wall.search", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallSearchResponse>> Search(ServiceAccessToken accessToken, int? ownerId = null, string domain = null, string query = null, bool? ownersOnly = null, int? count = null, int? offset = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["query"] = query,
-                ["owners_only"] = RequestHelpers.ParseBoolean(ownersOnly),
-                ["count"] = count?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallSearchResponse>("wall.search", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallSearchExtendedResponse>> SearchExtended(ServiceAccessToken accessToken, int? ownerId = null, string domain = null, string query = null, bool? ownersOnly = null, int? count = null, int? offset = null, bool? extended = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["domain"] = domain,
-                ["query"] = query,
-                ["owners_only"] = RequestHelpers.ParseBoolean(ownersOnly),
-                ["count"] = count?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallSearchExtendedResponse>("wall.search", accessToken, request);
-        }
-
-        public Task<ApiRequest<IEnumerable<WallWallpostFull>>> GetById(UserAccessToken accessToken, IEnumerable<string> posts = null, int? copyHistoryDepth = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["posts"] = RequestHelpers.ParseEnumerable(posts),
-                ["copy_history_depth"] = copyHistoryDepth?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<IEnumerable<WallWallpostFull>>("wall.getById", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetByIdExtendedResponse>> GetByIdExtended(UserAccessToken accessToken, IEnumerable<string> posts = null, bool? extended = null, int? copyHistoryDepth = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["posts"] = RequestHelpers.ParseEnumerable(posts),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["copy_history_depth"] = copyHistoryDepth?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetByIdExtendedResponse>("wall.getById", accessToken, request);
-        }
-
-        public Task<ApiRequest<IEnumerable<WallWallpostFull>>> GetById(IEnumerable<string> posts = null, int? copyHistoryDepth = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["posts"] = RequestHelpers.ParseEnumerable(posts),
-                ["copy_history_depth"] = copyHistoryDepth?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<IEnumerable<WallWallpostFull>>("wall.getById", null, request);
-        }
-
-        public Task<ApiRequest<WallGetByIdExtendedResponse>> GetByIdExtended(IEnumerable<string> posts = null, bool? extended = null, int? copyHistoryDepth = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["posts"] = RequestHelpers.ParseEnumerable(posts),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["copy_history_depth"] = copyHistoryDepth?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetByIdExtendedResponse>("wall.getById", null, request);
-        }
-
-        public Task<ApiRequest<IEnumerable<WallWallpostFull>>> GetById(ServiceAccessToken accessToken, IEnumerable<string> posts = null, int? copyHistoryDepth = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["posts"] = RequestHelpers.ParseEnumerable(posts),
-                ["copy_history_depth"] = copyHistoryDepth?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<IEnumerable<WallWallpostFull>>("wall.getById", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetByIdExtendedResponse>> GetByIdExtended(ServiceAccessToken accessToken, IEnumerable<string> posts = null, bool? extended = null, int? copyHistoryDepth = null, IEnumerable<string> fields = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["posts"] = RequestHelpers.ParseEnumerable(posts),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["copy_history_depth"] = copyHistoryDepth?.ToString(),
-                ["fields"] = RequestHelpers.ParseEnumerable(fields),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetByIdExtendedResponse>("wall.getById", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallPostResponse>> Post(UserAccessToken accessToken, int? ownerId = null, bool? friendsOnly = null, bool? fromGroup = null, string message = null, IEnumerable<string> attachments = null, string services = null, bool? signed = null, DateTime? publishDate = null, double? lat = null, double? @long = null, int? placeId = null, int? postId = null, string guid = null, bool? markAsAds = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["friends_only"] = RequestHelpers.ParseBoolean(friendsOnly),
-                ["from_group"] = RequestHelpers.ParseBoolean(fromGroup),
-                ["message"] = message,
-                ["attachments"] = RequestHelpers.ParseEnumerable(attachments),
-                ["services"] = services,
-                ["signed"] = RequestHelpers.ParseBoolean(signed),
-                ["publish_date"] = RequestHelpers.ParseDateTime(publishDate),
-                ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
-                ["place_id"] = placeId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["guid"] = guid,
-                ["mark_as_ads"] = RequestHelpers.ParseBoolean(markAsAds),
-            };
-
-            return RequestManager.CreateRequestAsync<WallPostResponse>("wall.post", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallRepostResponse>> Repost(UserAccessToken accessToken, string @object = null, string message = null, int? groupId = null, bool? markAsAds = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["@object"] = @object,
-                ["message"] = message,
-                ["group_id"] = groupId?.ToString(),
-                ["mark_as_ads"] = RequestHelpers.ParseBoolean(markAsAds),
-            };
-
-            return RequestManager.CreateRequestAsync<WallRepostResponse>("wall.repost", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetRepostsResponse>> GetReposts(UserAccessToken accessToken, int? ownerId = null, int? postId = null, int? offset = null, int? count = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetRepostsResponse>("wall.getReposts", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetRepostsResponse>> GetReposts(int? ownerId = null, int? postId = null, int? offset = null, int? count = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetRepostsResponse>("wall.getReposts", null, request);
-        }
-
-        public Task<ApiRequest<WallGetRepostsResponse>> GetReposts(ServiceAccessToken accessToken, int? ownerId = null, int? postId = null, int? offset = null, int? count = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetRepostsResponse>("wall.getReposts", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> Edit(UserAccessToken accessToken, int? ownerId = null, int? postId = null, bool? friendsOnly = null, string message = null, IEnumerable<string> attachments = null, string services = null, bool? signed = null, DateTime? publishDate = null, double? lat = null, double? @long = null, int? placeId = null, bool? markAsAds = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["friends_only"] = RequestHelpers.ParseBoolean(friendsOnly),
-                ["message"] = message,
-                ["attachments"] = RequestHelpers.ParseEnumerable(attachments),
-                ["services"] = services,
-                ["signed"] = RequestHelpers.ParseBoolean(signed),
-                ["publish_date"] = RequestHelpers.ParseDateTime(publishDate),
-                ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
-                ["place_id"] = placeId?.ToString(),
-                ["mark_as_ads"] = RequestHelpers.ParseBoolean(markAsAds),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.edit", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> Delete(UserAccessToken accessToken, int? ownerId = null, int? postId = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.delete", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> Restore(UserAccessToken accessToken, int? ownerId = null, int? postId = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.restore", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> Pin(UserAccessToken accessToken, int? ownerId = null, int? postId = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.pin", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> Unpin(UserAccessToken accessToken, int? ownerId = null, int? postId = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.unpin", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetCommentsResponse>> GetComments(UserAccessToken accessToken, int? ownerId = null, int? postId = null, bool? needLikes = null, int? startCommentId = null, int? offset = null, int? count = null, string sort = null, int? previewLength = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["need_likes"] = RequestHelpers.ParseBoolean(needLikes),
-                ["start_comment_id"] = startCommentId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["sort"] = sort,
-                ["preview_length"] = previewLength?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetCommentsResponse>("wall.getComments", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetCommentsExtendedResponse>> GetCommentsExtended(UserAccessToken accessToken, int? ownerId = null, int? postId = null, bool? needLikes = null, int? startCommentId = null, int? offset = null, int? count = null, string sort = null, int? previewLength = null, bool? extended = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["need_likes"] = RequestHelpers.ParseBoolean(needLikes),
-                ["start_comment_id"] = startCommentId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["sort"] = sort,
-                ["preview_length"] = previewLength?.ToString(),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetCommentsExtendedResponse>("wall.getComments", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetCommentsResponse>> GetComments(int? ownerId = null, int? postId = null, bool? needLikes = null, int? startCommentId = null, int? offset = null, int? count = null, string sort = null, int? previewLength = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["need_likes"] = RequestHelpers.ParseBoolean(needLikes),
-                ["start_comment_id"] = startCommentId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["sort"] = sort,
-                ["preview_length"] = previewLength?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetCommentsResponse>("wall.getComments", null, request);
-        }
-
-        public Task<ApiRequest<WallGetCommentsExtendedResponse>> GetCommentsExtended(int? ownerId = null, int? postId = null, bool? needLikes = null, int? startCommentId = null, int? offset = null, int? count = null, string sort = null, int? previewLength = null, bool? extended = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["need_likes"] = RequestHelpers.ParseBoolean(needLikes),
-                ["start_comment_id"] = startCommentId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["sort"] = sort,
-                ["preview_length"] = previewLength?.ToString(),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetCommentsExtendedResponse>("wall.getComments", null, request);
-        }
-
-        public Task<ApiRequest<WallGetCommentsResponse>> GetComments(ServiceAccessToken accessToken, int? ownerId = null, int? postId = null, bool? needLikes = null, int? startCommentId = null, int? offset = null, int? count = null, string sort = null, int? previewLength = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["need_likes"] = RequestHelpers.ParseBoolean(needLikes),
-                ["start_comment_id"] = startCommentId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["sort"] = sort,
-                ["preview_length"] = previewLength?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetCommentsResponse>("wall.getComments", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallGetCommentsExtendedResponse>> GetCommentsExtended(ServiceAccessToken accessToken, int? ownerId = null, int? postId = null, bool? needLikes = null, int? startCommentId = null, int? offset = null, int? count = null, string sort = null, int? previewLength = null, bool? extended = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["need_likes"] = RequestHelpers.ParseBoolean(needLikes),
-                ["start_comment_id"] = startCommentId?.ToString(),
-                ["offset"] = offset?.ToString(),
-                ["count"] = count?.ToString(),
-                ["sort"] = sort,
-                ["preview_length"] = previewLength?.ToString(),
-                ["extended"] = RequestHelpers.ParseBoolean(extended),
-            };
-
-            return RequestManager.CreateRequestAsync<WallGetCommentsExtendedResponse>("wall.getComments", accessToken, request);
-        }
-
-        public Task<ApiRequest<WallCreateCommentResponse>> CreateComment(UserAccessToken accessToken, int? ownerId = null, int? postId = null, int? fromGroup = null, string message = null, int? replyToComment = null, IEnumerable<string> attachments = null, int? stickerId = null, string guid = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["from_group"] = fromGroup?.ToString(),
-                ["message"] = message,
-                ["reply_to_comment"] = replyToComment?.ToString(),
-                ["attachments"] = RequestHelpers.ParseEnumerable(attachments),
-                ["sticker_id"] = stickerId?.ToString(),
-                ["guid"] = guid,
-            };
-
-            return RequestManager.CreateRequestAsync<WallCreateCommentResponse>("wall.createComment", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> EditComment(UserAccessToken accessToken, int? ownerId = null, int? commentId = null, string message = null, IEnumerable<string> attachments = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["comment_id"] = commentId?.ToString(),
-                ["message"] = message,
-                ["attachments"] = RequestHelpers.ParseEnumerable(attachments),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.editComment", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> DeleteComment(UserAccessToken accessToken, int? ownerId = null, int? commentId = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["comment_id"] = commentId?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.deleteComment", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> RestoreComment(UserAccessToken accessToken, int? ownerId = null, int? commentId = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["comment_id"] = commentId?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.restoreComment", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> ReportPost(UserAccessToken accessToken, int? ownerId = null, int? postId = null, int? reason = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["post_id"] = postId?.ToString(),
-                ["reason"] = reason?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.reportPost", accessToken, request);
-        }
-
-        public Task<ApiRequest<bool?>> ReportComment(UserAccessToken accessToken, int? ownerId = null, int? commentId = null, int? reason = null)
-        {
-            var request = new Dictionary<string, string>
-            {
-                ["access_token"] = accessToken?.Value,
-                ["owner_id"] = ownerId?.ToString(),
-                ["comment_id"] = commentId?.ToString(),
-                ["reason"] = reason?.ToString(),
-            };
-
-            return RequestManager.CreateRequestAsync<bool?>("wall.reportComment", accessToken, request);
-        }
-
-    }
-
     internal class PhotosApi : IPhotosApi
     {
         public Task<ApiRequest<PhotosPhotoAlbumFull>> CreateAlbum(UserAccessToken accessToken, string title = null, int? groupId = null, string description = null, IEnumerable<string> privacyView = null, IEnumerable<string> privacyComment = null, bool? uploadByAdminsOnly = null, bool? commentsDisabled = null)
@@ -1489,7 +930,7 @@ namespace Citrina.Methods
                 ["access_token"] = accessToken?.Value,
                 ["q"] = q,
                 ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
+                ["long"] = @long?.ToString(),
                 ["start_time"] = startTime?.ToString(),
                 ["end_time"] = endTime?.ToString(),
                 ["sort"] = sort?.ToString(),
@@ -1507,7 +948,7 @@ namespace Citrina.Methods
             {
                 ["q"] = q,
                 ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
+                ["long"] = @long?.ToString(),
                 ["start_time"] = startTime?.ToString(),
                 ["end_time"] = endTime?.ToString(),
                 ["sort"] = sort?.ToString(),
@@ -1526,7 +967,7 @@ namespace Citrina.Methods
                 ["access_token"] = accessToken?.Value,
                 ["q"] = q,
                 ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
+                ["long"] = @long?.ToString(),
                 ["start_time"] = startTime?.ToString(),
                 ["end_time"] = endTime?.ToString(),
                 ["sort"] = sort?.ToString(),
@@ -2087,7 +1528,7 @@ namespace Citrina.Methods
                 ["access_token"] = accessToken?.Value,
                 ["offset"] = offset?.ToString(),
                 ["count"] = count?.ToString(),
-                ["@out"] = RequestHelpers.ParseBoolean(@out),
+                ["out"] = RequestHelpers.ParseBoolean(@out),
                 ["sort"] = sort?.ToString(),
                 ["suggested"] = RequestHelpers.ParseBoolean(suggested),
             };
@@ -2103,7 +1544,7 @@ namespace Citrina.Methods
                 ["offset"] = offset?.ToString(),
                 ["count"] = count?.ToString(),
                 ["need_mutual"] = RequestHelpers.ParseBoolean(needMutual),
-                ["@out"] = RequestHelpers.ParseBoolean(@out),
+                ["out"] = RequestHelpers.ParseBoolean(@out),
                 ["sort"] = sort?.ToString(),
                 ["suggested"] = RequestHelpers.ParseBoolean(suggested),
             };
@@ -2119,7 +1560,7 @@ namespace Citrina.Methods
                 ["offset"] = offset?.ToString(),
                 ["count"] = count?.ToString(),
                 ["extended"] = RequestHelpers.ParseBoolean(extended),
-                ["@out"] = RequestHelpers.ParseBoolean(@out),
+                ["out"] = RequestHelpers.ParseBoolean(@out),
                 ["sort"] = sort?.ToString(),
                 ["suggested"] = RequestHelpers.ParseBoolean(suggested),
             };
@@ -5602,7 +5043,7 @@ namespace Citrina.Methods
             {
                 ["access_token"] = accessToken?.Value,
                 ["url"] = url,
-                ["@private"] = RequestHelpers.ParseBoolean(@private),
+                ["private"] = RequestHelpers.ParseBoolean(@private),
             };
 
             return RequestManager.CreateRequestAsync<UtilsShortLink>("utils.getShortLink", accessToken, request);
@@ -5614,7 +5055,7 @@ namespace Citrina.Methods
             {
                 ["access_token"] = accessToken?.Value,
                 ["url"] = url,
-                ["@private"] = RequestHelpers.ParseBoolean(@private),
+                ["private"] = RequestHelpers.ParseBoolean(@private),
             };
 
             return RequestManager.CreateRequestAsync<UtilsShortLink>("utils.getShortLink", accessToken, request);
@@ -5625,7 +5066,7 @@ namespace Citrina.Methods
             var request = new Dictionary<string, string>
             {
                 ["url"] = url,
-                ["@private"] = RequestHelpers.ParseBoolean(@private),
+                ["private"] = RequestHelpers.ParseBoolean(@private),
             };
 
             return RequestManager.CreateRequestAsync<UtilsShortLink>("utils.getShortLink", null, request);
@@ -5637,7 +5078,7 @@ namespace Citrina.Methods
             {
                 ["access_token"] = accessToken?.Value,
                 ["url"] = url,
-                ["@private"] = RequestHelpers.ParseBoolean(@private),
+                ["private"] = RequestHelpers.ParseBoolean(@private),
             };
 
             return RequestManager.CreateRequestAsync<UtilsShortLink>("utils.getShortLink", accessToken, request);

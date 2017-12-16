@@ -6,12 +6,12 @@ namespace Citrina
 {
     internal class MessagesApi : IMessagesApi
     {
-        public Task<ApiRequest<MessagesGetResponse>> Get(UserAccessToken accessToken, bool? @out = null, int? offset = null, int? count = null, int? filter = null, int? timeOffset = null, int? previewLength = null, int? lastMessageId = null)
+        public Task<ApiRequest<MessagesGetResponse>> Get(UserAccessToken accessToken, bool? @out, int? offset, int? count, int? filter, int? timeOffset, int? previewLength, int? lastMessageId)
         {
             var request = new Dictionary<string, string>
             {
                 ["access_token"] = accessToken?.Value,
-                ["@out"] = RequestHelpers.ParseBoolean(@out),
+                ["out"] = RequestHelpers.ParseBoolean(@out),
                 ["offset"] = offset?.ToString(),
                 ["count"] = count?.ToString(),
                 ["filter"] = filter?.ToString(),
@@ -23,12 +23,12 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetResponse>("messages.get", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetResponse>> Get(GroupAccessToken accessToken, bool? @out = null, int? offset = null, int? count = null, int? filter = null, int? timeOffset = null, int? previewLength = null, int? lastMessageId = null)
+        public Task<ApiRequest<MessagesGetResponse>> Get(GroupAccessToken accessToken, bool? @out, int? offset, int? count, int? filter, int? timeOffset, int? previewLength, int? lastMessageId)
         {
             var request = new Dictionary<string, string>
             {
                 ["access_token"] = accessToken?.Value,
-                ["@out"] = RequestHelpers.ParseBoolean(@out),
+                ["out"] = RequestHelpers.ParseBoolean(@out),
                 ["offset"] = offset?.ToString(),
                 ["count"] = count?.ToString(),
                 ["filter"] = filter?.ToString(),
@@ -40,7 +40,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetResponse>("messages.get", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetDialogsResponse>> GetDialogs(UserAccessToken accessToken, int? offset = null, int? count = null, int? startMessageId = null, int? previewLength = null, bool? unread = null, bool? important = null, bool? unanswered = null)
+        public Task<ApiRequest<MessagesGetDialogsResponse>> GetDialogs(UserAccessToken accessToken, int? offset, int? count, int? startMessageId, int? previewLength, bool? unread, bool? important, bool? unanswered)
         {
             var request = new Dictionary<string, string>
             {
@@ -57,7 +57,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetDialogsResponse>("messages.getDialogs", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetDialogsResponse>> GetDialogs(GroupAccessToken accessToken, int? offset = null, int? count = null, int? startMessageId = null, int? previewLength = null, bool? unread = null, bool? important = null, bool? unanswered = null)
+        public Task<ApiRequest<MessagesGetDialogsResponse>> GetDialogs(GroupAccessToken accessToken, int? offset, int? count, int? startMessageId, int? previewLength, bool? unread, bool? important, bool? unanswered)
         {
             var request = new Dictionary<string, string>
             {
@@ -74,7 +74,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetDialogsResponse>("messages.getDialogs", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetByIdResponse>> GetById(UserAccessToken accessToken, IEnumerable<int?> messageIds = null)
+        public Task<ApiRequest<MessagesGetByIdResponse>> GetById(UserAccessToken accessToken, IEnumerable<int?> messageIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -85,7 +85,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetByIdResponse>("messages.getById", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetByIdResponse>> GetById(GroupAccessToken accessToken, IEnumerable<int?> messageIds = null)
+        public Task<ApiRequest<MessagesGetByIdResponse>> GetById(GroupAccessToken accessToken, IEnumerable<int?> messageIds)
         {
             var request = new Dictionary<string, string>
             {
@@ -96,7 +96,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetByIdResponse>("messages.getById", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesSearchResponse>> Search(UserAccessToken accessToken, string q = null, int? peerId = null, DateTime? date = null, int? previewLength = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<MessagesSearchResponse>> Search(UserAccessToken accessToken, string q, int? peerId, DateTime? date, int? previewLength, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -112,7 +112,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesSearchResponse>("messages.search", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesSearchResponse>> Search(GroupAccessToken accessToken, string q = null, int? peerId = null, DateTime? date = null, int? previewLength = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<MessagesSearchResponse>> Search(GroupAccessToken accessToken, string q, int? peerId, DateTime? date, int? previewLength, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -128,7 +128,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesSearchResponse>("messages.search", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetHistoryResponse>> GetHistory(UserAccessToken accessToken, int? offset = null, int? count = null, int? userId = null, int? peerId = null, int? startMessageId = null, int? rev = null)
+        public Task<ApiRequest<MessagesGetHistoryResponse>> GetHistory(UserAccessToken accessToken, int? offset, int? count, int? userId, int? peerId, int? startMessageId, int? rev)
         {
             var request = new Dictionary<string, string>
             {
@@ -144,7 +144,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetHistoryResponse>("messages.getHistory", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetHistoryResponse>> GetHistory(GroupAccessToken accessToken, int? offset = null, int? count = null, int? userId = null, int? peerId = null, int? startMessageId = null, int? rev = null)
+        public Task<ApiRequest<MessagesGetHistoryResponse>> GetHistory(GroupAccessToken accessToken, int? offset, int? count, int? userId, int? peerId, int? startMessageId, int? rev)
         {
             var request = new Dictionary<string, string>
             {
@@ -160,7 +160,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetHistoryResponse>("messages.getHistory", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetHistoryAttachmentsResponse>> GetHistoryAttachments(UserAccessToken accessToken, int? peerId = null, string mediaType = null, string startFrom = null, int? count = null, bool? photoSizes = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<MessagesGetHistoryAttachmentsResponse>> GetHistoryAttachments(UserAccessToken accessToken, int? peerId, string mediaType, string startFrom, int? count, bool? photoSizes, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -176,7 +176,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetHistoryAttachmentsResponse>("messages.getHistoryAttachments", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetHistoryAttachmentsResponse>> GetHistoryAttachments(GroupAccessToken accessToken, int? peerId = null, string mediaType = null, string startFrom = null, int? count = null, bool? photoSizes = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<MessagesGetHistoryAttachmentsResponse>> GetHistoryAttachments(GroupAccessToken accessToken, int? peerId, string mediaType, string startFrom, int? count, bool? photoSizes, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -192,7 +192,22 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetHistoryAttachmentsResponse>("messages.getHistoryAttachments", accessToken, request);
         }
 
-        public Task<ApiRequest<int?>> Send(UserAccessToken accessToken, int? userId = null, int? randomId = null, int? peerId = null, string domain = null, int? chatId = null, IEnumerable<int?> userIds = null, string message = null, double? lat = null, double? @long = null, string attachment = null, string forwardMessages = null, int? stickerId = null, bool? notification = null)
+        // Verified signature / response
+        public Task<ApiRequest<int?>> Send(
+            UserAccessToken accessToken,
+            int? userId,
+            int? randomId,
+            int? peerId,
+            string domain,
+            int? chatId,
+            IEnumerable<int?> userIds,
+            string message,
+            double? lat,
+            double? @long,
+            string attachment,
+            string forwardMessages,
+            int? stickerId,
+            bool? notification)
         {
             var request = new Dictionary<string, string>
             {
@@ -205,7 +220,7 @@ namespace Citrina
                 ["user_ids"] = RequestHelpers.ParseEnumerable(userIds),
                 ["message"] = message,
                 ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
+                ["long"] = @long?.ToString(),
                 ["attachment"] = attachment,
                 ["forward_messages"] = forwardMessages,
                 ["sticker_id"] = stickerId?.ToString(),
@@ -215,7 +230,22 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<int?>("messages.send", accessToken, request);
         }
 
-        public Task<ApiRequest<int?>> Send(GroupAccessToken accessToken, int? userId = null, int? randomId = null, int? peerId = null, string domain = null, int? chatId = null, IEnumerable<int?> userIds = null, string message = null, double? lat = null, double? @long = null, string attachment = null, string forwardMessages = null, int? stickerId = null, bool? notification = null)
+        // Verified signature / response
+        public Task<ApiRequest<int?>> Send(
+            GroupAccessToken accessToken,
+            int? userId,
+            int? randomId,
+            int? peerId,
+            string domain,
+            int? chatId,
+            IEnumerable<int?> userIds,
+            string message,
+            double? lat,
+            double? @long,
+            string attachment,
+            string forwardMessages,
+            int? stickerId,
+            bool? notification)
         {
             var request = new Dictionary<string, string>
             {
@@ -228,7 +258,7 @@ namespace Citrina
                 ["user_ids"] = RequestHelpers.ParseEnumerable(userIds),
                 ["message"] = message,
                 ["lat"] = lat?.ToString(),
-                ["@long"] = @long?.ToString(),
+                ["long"] = @long?.ToString(),
                 ["attachment"] = attachment,
                 ["forward_messages"] = forwardMessages,
                 ["sticker_id"] = stickerId?.ToString(),
@@ -238,7 +268,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<int?>("messages.send", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesDeleteResponse>> Delete(UserAccessToken accessToken, IEnumerable<int?> messageIds = null, bool? spam = null)
+        public Task<ApiRequest<MessagesDeleteResponse>> Delete(UserAccessToken accessToken, IEnumerable<int?> messageIds, bool? spam)
         {
             var request = new Dictionary<string, string>
             {
@@ -250,7 +280,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesDeleteResponse>("messages.delete", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesDeleteResponse>> Delete(GroupAccessToken accessToken, IEnumerable<int?> messageIds = null, bool? spam = null)
+        public Task<ApiRequest<MessagesDeleteResponse>> Delete(GroupAccessToken accessToken, IEnumerable<int?> messageIds, bool? spam)
         {
             var request = new Dictionary<string, string>
             {
@@ -262,7 +292,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesDeleteResponse>("messages.delete", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteDialog(UserAccessToken accessToken, string userId = null, int? peerId = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<bool?>> DeleteDialog(UserAccessToken accessToken, string userId, int? peerId, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -276,7 +306,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.deleteDialog", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DeleteDialog(GroupAccessToken accessToken, string userId = null, int? peerId = null, int? offset = null, int? count = null)
+        public Task<ApiRequest<bool?>> DeleteDialog(GroupAccessToken accessToken, string userId, int? peerId, int? offset, int? count)
         {
             var request = new Dictionary<string, string>
             {
@@ -290,7 +320,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.deleteDialog", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> Restore(UserAccessToken accessToken, int? messageId = null)
+        public Task<ApiRequest<bool?>> Restore(UserAccessToken accessToken, int? messageId)
         {
             var request = new Dictionary<string, string>
             {
@@ -301,7 +331,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.restore", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> Restore(GroupAccessToken accessToken, int? messageId = null)
+        public Task<ApiRequest<bool?>> Restore(GroupAccessToken accessToken, int? messageId)
         {
             var request = new Dictionary<string, string>
             {
@@ -312,7 +342,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.restore", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> MarkAsRead(UserAccessToken accessToken, IEnumerable<int?> messageIds = null, string peerId = null, int? startMessageId = null)
+        public Task<ApiRequest<bool?>> MarkAsRead(UserAccessToken accessToken, IEnumerable<int?> messageIds, string peerId, int? startMessageId)
         {
             var request = new Dictionary<string, string>
             {
@@ -325,7 +355,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.markAsRead", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> MarkAsRead(GroupAccessToken accessToken, IEnumerable<int?> messageIds = null, string peerId = null, int? startMessageId = null)
+        public Task<ApiRequest<bool?>> MarkAsRead(GroupAccessToken accessToken, IEnumerable<int?> messageIds, string peerId, int? startMessageId)
         {
             var request = new Dictionary<string, string>
             {
@@ -338,7 +368,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.markAsRead", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<int?>>> MarkAsImportant(UserAccessToken accessToken, IEnumerable<int?> messageIds = null, int? important = null)
+        public Task<ApiRequest<IEnumerable<int?>>> MarkAsImportant(UserAccessToken accessToken, IEnumerable<int?> messageIds, int? important)
         {
             var request = new Dictionary<string, string>
             {
@@ -350,7 +380,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<int?>>("messages.markAsImportant", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<int?>>> MarkAsImportant(GroupAccessToken accessToken, IEnumerable<int?> messageIds = null, int? important = null)
+        public Task<ApiRequest<IEnumerable<int?>>> MarkAsImportant(GroupAccessToken accessToken, IEnumerable<int?> messageIds, int? important)
         {
             var request = new Dictionary<string, string>
             {
@@ -362,7 +392,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<int?>>("messages.markAsImportant", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> MarkAsImportantDialog(GroupAccessToken accessToken, IEnumerable<int?> peerId = null, int? important = null)
+        public Task<ApiRequest<bool?>> MarkAsImportantDialog(GroupAccessToken accessToken, IEnumerable<int?> peerId, int? important)
         {
             var request = new Dictionary<string, string>
             {
@@ -374,7 +404,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.markAsImportantDialog", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> MarkAsUnansweredDialog(GroupAccessToken accessToken, IEnumerable<int?> peerId = null, int? important = null)
+        public Task<ApiRequest<bool?>> MarkAsUnansweredDialog(GroupAccessToken accessToken, IEnumerable<int?> peerId, int? important)
         {
             var request = new Dictionary<string, string>
             {
@@ -386,7 +416,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.markAsUnansweredDialog", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesLongpollParams>> GetLongPollServer(UserAccessToken accessToken, int? lpVersion = null, bool? needPts = null)
+        public Task<ApiRequest<MessagesLongpollParams>> GetLongPollServer(UserAccessToken accessToken, int? lpVersion, bool? needPts)
         {
             var request = new Dictionary<string, string>
             {
@@ -398,7 +428,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesLongpollParams>("messages.getLongPollServer", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesLongpollParams>> GetLongPollServer(GroupAccessToken accessToken, int? lpVersion = null, bool? needPts = null)
+        public Task<ApiRequest<MessagesLongpollParams>> GetLongPollServer(GroupAccessToken accessToken, int? lpVersion, bool? needPts)
         {
             var request = new Dictionary<string, string>
             {
@@ -410,7 +440,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesLongpollParams>("messages.getLongPollServer", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetLongPollHistoryResponse>> GetLongPollHistory(UserAccessToken accessToken, int? ts = null, int? pts = null, int? previewLength = null, bool? onlines = null, IEnumerable<string> fields = null, int? eventsLimit = null, int? msgsLimit = null, int? maxMsgId = null)
+        public Task<ApiRequest<MessagesGetLongPollHistoryResponse>> GetLongPollHistory(UserAccessToken accessToken, int? ts, int? pts, int? previewLength, bool? onlines, IEnumerable<string> fields, int? eventsLimit, int? msgsLimit, int? maxMsgId)
         {
             var request = new Dictionary<string, string>
             {
@@ -428,7 +458,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetLongPollHistoryResponse>("messages.getLongPollHistory", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetLongPollHistoryResponse>> GetLongPollHistory(GroupAccessToken accessToken, int? ts = null, int? pts = null, int? previewLength = null, bool? onlines = null, IEnumerable<string> fields = null, int? eventsLimit = null, int? msgsLimit = null, int? maxMsgId = null)
+        public Task<ApiRequest<MessagesGetLongPollHistoryResponse>> GetLongPollHistory(GroupAccessToken accessToken, int? ts, int? pts, int? previewLength, bool? onlines, IEnumerable<string> fields, int? eventsLimit, int? msgsLimit, int? maxMsgId)
         {
             var request = new Dictionary<string, string>
             {
@@ -446,7 +476,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetLongPollHistoryResponse>("messages.getLongPollHistory", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesChat>> GetChat(UserAccessToken accessToken, int? chatId = null, string nameCase = null)
+        public Task<ApiRequest<MessagesChat>> GetChat(UserAccessToken accessToken, int? chatId, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -458,7 +488,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesChat>("messages.getChat", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesChatFull>> GetChatFields(UserAccessToken accessToken, int? chatId = null, IEnumerable<string> fields = null, string nameCase = null)
+        public Task<ApiRequest<MessagesChatFull>> GetChatFields(UserAccessToken accessToken, int? chatId, IEnumerable<string> fields, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -471,7 +501,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesChatFull>("messages.getChat", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<MessagesChat>>> GetChatChatIds(UserAccessToken accessToken, int? chatId = null, IEnumerable<int?> chatIds = null, string nameCase = null)
+        public Task<ApiRequest<IEnumerable<MessagesChat>>> GetChatChatIds(UserAccessToken accessToken, int? chatId, IEnumerable<int?> chatIds, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -484,7 +514,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<MessagesChat>>("messages.getChat", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<MessagesChatFull>>> GetChatChatIdsFields(UserAccessToken accessToken, int? chatId = null, string nameCase = null)
+        public Task<ApiRequest<IEnumerable<MessagesChatFull>>> GetChatChatIdsFields(UserAccessToken accessToken, int? chatId, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -496,7 +526,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<MessagesChatFull>>("messages.getChat", accessToken, request);
         }
 
-        public Task<ApiRequest<int?>> CreateChat(UserAccessToken accessToken, IEnumerable<int?> userIds = null, string title = null)
+        public Task<ApiRequest<int?>> CreateChat(UserAccessToken accessToken, IEnumerable<int?> userIds, string title)
         {
             var request = new Dictionary<string, string>
             {
@@ -508,7 +538,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<int?>("messages.createChat", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> EditChat(UserAccessToken accessToken, int? chatId = null, string title = null)
+        public Task<ApiRequest<bool?>> EditChat(UserAccessToken accessToken, int? chatId, string title)
         {
             var request = new Dictionary<string, string>
             {
@@ -520,7 +550,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.editChat", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<int?>>> GetChatUsers(UserAccessToken accessToken, int? chatId = null, string nameCase = null)
+        public Task<ApiRequest<IEnumerable<int?>>> GetChatUsers(UserAccessToken accessToken, int? chatId, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -532,7 +562,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<int?>>("messages.getChatUsers", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<MessagesUserXtrInvitedBy>>> GetChatUsersFields(UserAccessToken accessToken, int? chatId = null, IEnumerable<string> fields = null, string nameCase = null)
+        public Task<ApiRequest<IEnumerable<MessagesUserXtrInvitedBy>>> GetChatUsersFields(UserAccessToken accessToken, int? chatId, IEnumerable<string> fields, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -545,7 +575,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<MessagesUserXtrInvitedBy>>("messages.getChatUsers", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetChatUsersChatIdsResponse>> GetChatUsersChatIds(UserAccessToken accessToken, int? chatId = null, IEnumerable<int?> chatIds = null, string nameCase = null)
+        public Task<ApiRequest<MessagesGetChatUsersChatIdsResponse>> GetChatUsersChatIds(UserAccessToken accessToken, int? chatId, IEnumerable<int?> chatIds, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -558,7 +588,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetChatUsersChatIdsResponse>("messages.getChatUsers", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesGetChatUsersChatIdsFieldsResponse>> GetChatUsersChatIdsFields(UserAccessToken accessToken, int? chatId = null, string nameCase = null)
+        public Task<ApiRequest<MessagesGetChatUsersChatIdsFieldsResponse>> GetChatUsersChatIdsFields(UserAccessToken accessToken, int? chatId, string nameCase)
         {
             var request = new Dictionary<string, string>
             {
@@ -570,7 +600,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetChatUsersChatIdsFieldsResponse>("messages.getChatUsers", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> SetActivity(UserAccessToken accessToken, string userId = null, string type = null, int? peerId = null)
+        public Task<ApiRequest<bool?>> SetActivity(UserAccessToken accessToken, string userId, string type, int? peerId)
         {
             var request = new Dictionary<string, string>
             {
@@ -583,7 +613,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.setActivity", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<string>>> SearchDialogs(UserAccessToken accessToken, string q = null, int? limit = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<IEnumerable<string>>> SearchDialogs(UserAccessToken accessToken, string q, int? limit, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -596,7 +626,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<string>>("messages.searchDialogs", accessToken, request);
         }
 
-        public Task<ApiRequest<IEnumerable<string>>> SearchDialogs(GroupAccessToken accessToken, string q = null, int? limit = null, IEnumerable<string> fields = null)
+        public Task<ApiRequest<IEnumerable<string>>> SearchDialogs(GroupAccessToken accessToken, string q, int? limit, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>
             {
@@ -609,7 +639,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<string>>("messages.searchDialogs", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> AddChatUser(UserAccessToken accessToken, int? chatId = null, int? userId = null)
+        public Task<ApiRequest<bool?>> AddChatUser(UserAccessToken accessToken, int? chatId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -621,7 +651,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.addChatUser", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> RemoveChatUser(UserAccessToken accessToken, int? chatId = null, string userId = null)
+        public Task<ApiRequest<bool?>> RemoveChatUser(UserAccessToken accessToken, int? chatId, string userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -633,7 +663,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.removeChatUser", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesLastActivity>> GetLastActivity(UserAccessToken accessToken, int? userId = null)
+        public Task<ApiRequest<MessagesLastActivity>> GetLastActivity(UserAccessToken accessToken, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -644,7 +674,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesLastActivity>("messages.getLastActivity", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesSetChatPhotoResponse>> SetChatPhoto(UserAccessToken accessToken, string file = null)
+        public Task<ApiRequest<MessagesSetChatPhotoResponse>> SetChatPhoto(UserAccessToken accessToken, string file)
         {
             var request = new Dictionary<string, string>
             {
@@ -655,7 +685,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesSetChatPhotoResponse>("messages.setChatPhoto", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesDeleteChatPhotoResponse>> DeleteChatPhoto(UserAccessToken accessToken, int? chatId = null)
+        public Task<ApiRequest<MessagesDeleteChatPhotoResponse>> DeleteChatPhoto(UserAccessToken accessToken, int? chatId)
         {
             var request = new Dictionary<string, string>
             {
@@ -666,7 +696,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesDeleteChatPhotoResponse>("messages.deleteChatPhoto", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> DenyMessagesFromGroup(UserAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<bool?>> DenyMessagesFromGroup(UserAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -677,7 +707,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.denyMessagesFromGroup", accessToken, request);
         }
 
-        public Task<ApiRequest<bool?>> AllowMessagesFromGroup(UserAccessToken accessToken, int? groupId = null)
+        public Task<ApiRequest<bool?>> AllowMessagesFromGroup(UserAccessToken accessToken, int? groupId)
         {
             var request = new Dictionary<string, string>
             {
@@ -688,7 +718,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("messages.allowMessagesFromGroup", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesIsMessagesFromGroupAllowedResponse>> IsMessagesFromGroupAllowed(UserAccessToken accessToken, int? groupId = null, int? userId = null)
+        public Task<ApiRequest<MessagesIsMessagesFromGroupAllowedResponse>> IsMessagesFromGroupAllowed(UserAccessToken accessToken, int? groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
@@ -700,7 +730,7 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesIsMessagesFromGroupAllowedResponse>("messages.isMessagesFromGroupAllowed", accessToken, request);
         }
 
-        public Task<ApiRequest<MessagesIsMessagesFromGroupAllowedResponse>> IsMessagesFromGroupAllowed(GroupAccessToken accessToken, int? groupId = null, int? userId = null)
+        public Task<ApiRequest<MessagesIsMessagesFromGroupAllowedResponse>> IsMessagesFromGroupAllowed(GroupAccessToken accessToken, int? groupId, int? userId)
         {
             var request = new Dictionary<string, string>
             {
