@@ -2281,6 +2281,7 @@ namespace Citrina
         /// User ban info
         /// </summary>
         public GroupsGroupBanInfo BanInfo { get; set; }
+        public bool? Trending { get; set; }
     }
 
     public class GroupsGroupLink
@@ -5894,6 +5895,7 @@ namespace Citrina
         /// Favorite quotes
         /// </summary>
         public string Quotes { get; set; }
+        public bool? Trending { get; set; }
     }
 
     public class UsersUserFullXtrType : UsersUserFull
