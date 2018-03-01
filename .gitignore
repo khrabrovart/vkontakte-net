@@ -1,6 +1,3 @@
-Citrina.Tests/
-Citrina/bin/
-Citrina/obj/
 .sonarqube/
 .vs/
 src/Citrina.CallbackApi/bin/
@@ -9,4 +6,5 @@ src/Citrina.Uploader/bin/
 src/Citrina.Uploader/obj/
 src/Citrina/bin/
 src/Citrina/obj/
+src/Citrina.Tests/
 src/Citrina.Tests.sln
