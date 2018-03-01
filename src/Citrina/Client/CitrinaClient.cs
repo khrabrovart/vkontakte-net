@@ -1,6 +1,4 @@
-﻿using Citrina.Methods;
-
-namespace Citrina
+﻿namespace Citrina
 {
     /// <summary>
     /// Provides a client to work with VK API methods.
