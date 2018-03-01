@@ -192,7 +192,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<MessagesGetHistoryAttachmentsResponse>("messages.getHistoryAttachments", accessToken, request);
         }
 
-        // Verified signature / response
         public Task<ApiRequest<int?>> Send(
             UserAccessToken accessToken,
             int? userId,
@@ -230,7 +229,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<int?>("messages.send", accessToken, request);
         }
 
-        // Verified signature / response
         public Task<ApiRequest<int?>> Send(
             GroupAccessToken accessToken,
             int? userId,

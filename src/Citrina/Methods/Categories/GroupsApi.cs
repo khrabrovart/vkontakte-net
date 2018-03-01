@@ -884,7 +884,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCallbackServerSettingsResponse>("groups.getCallbackServerSettings", accessToken, request);
         }
 
-        // Verified signature
         public Task<ApiRequest<GroupsGetCallbackSettingsResponse>> GetCallbackSettings(UserAccessToken accessToken, int? groupId, int? serverId)
         {
             var request = new Dictionary<string, string>
@@ -897,7 +896,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<GroupsGetCallbackSettingsResponse>("groups.getCallbackSettings", accessToken, request);
         }
 
-        // Verified signature
         public Task<ApiRequest<GroupsGetCallbackSettingsResponse>> GetCallbackSettings(GroupAccessToken accessToken, int? groupId, int? serverId)
         {
             var request = new Dictionary<string, string>
@@ -958,7 +956,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.setCallbackServerSettings", accessToken, request);
         }
 
-        // Verified signature / response
         public Task<ApiRequest<bool?>> SetCallbackSettings(
             UserAccessToken accessToken,
             int? groupId,
@@ -1048,7 +1045,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<bool?>("groups.setCallbackSettings", accessToken, request);
         }
 
-        // Verified signature / response
         public Task<ApiRequest<bool?>> SetCallbackSettings(
             GroupAccessToken accessToken,
             int? groupId,

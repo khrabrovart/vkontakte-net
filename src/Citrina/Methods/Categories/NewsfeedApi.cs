@@ -6,7 +6,6 @@ namespace Citrina
 {
     internal class NewsfeedApi : INewsfeedApi
     {
-        // Verified response
         public Task<ApiRequest<NewsfeedGetResponse>> Get(UserAccessToken accessToken, IEnumerable<string> filters, bool? returnBanned, DateTime? startTime, DateTime? endTime, int? maxPhotos, IEnumerable<string> sourceIds, string startFrom, int? count, IEnumerable<string> fields)
         {
             var request = new Dictionary<string, string>

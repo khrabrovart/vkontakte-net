@@ -175,7 +175,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<IEnumerable<int?>>("friends.getRecent", accessToken, request);
         }
 
-        // Verified signature
         public Task<ApiRequest<FriendsGetRequestsResponse>> GetRequests(
             UserAccessToken accessToken,
             int? offset,
@@ -199,7 +198,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<FriendsGetRequestsResponse>("friends.getRequests", accessToken, request);
         }
 
-        // Verified signature
         public Task<ApiRequest<FriendsGetRequestsNeedMutualResponse>> GetRequestsNeedMutual(
             UserAccessToken accessToken,
             int? offset,
@@ -225,7 +223,6 @@ namespace Citrina
             return RequestManager.CreateRequestAsync<FriendsGetRequestsNeedMutualResponse>("friends.getRequests", accessToken, request);
         }
 
-        // Verified signature
         public Task<ApiRequest<FriendsGetRequestsExtendedResponse>> GetRequestsExtended(
             UserAccessToken accessToken,
             int? offset,

@@ -5,7 +5,6 @@ namespace Citrina
 {
     internal class SearchApi : ISearchApi
     {
-        // Verified signature
         public Task<ApiRequest<IEnumerable<SearchHint>>> GetHints(
             UserAccessToken accessToken,
             string q,
