@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citrina", "Citrina\Citrina.csproj", "{45924B3D-3A8A-43E0-8D41-0908654DDBF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citrina.CallbackApi", "Citrina.CallbackApi\Citrina.CallbackApi.csproj", "{D7228439-AC5A-49DF-8A71-EBF1161EA896}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Citrina.Uploader", "Citrina.Uploader\Citrina.Uploader.csproj", "{0CE09ADE-18D4-46D4-92A1-C8AACEFC43CA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VKontakte.Net", "VKontakte.Net\VKontakte.Net.csproj", "{657522E5-649D-4456-978F-8CC9526607B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45924B3D-3A8A-43E0-8D41-0908654DDBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45924B3D-3A8A-43E0-8D41-0908654DDBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45924B3D-3A8A-43E0-8D41-0908654DDBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45924B3D-3A8A-43E0-8D41-0908654DDBF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7228439-AC5A-49DF-8A71-EBF1161EA896}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7228439-AC5A-49DF-8A71-EBF1161EA896}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7228439-AC5A-49DF-8A71-EBF1161EA896}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7228439-AC5A-49DF-8A71-EBF1161EA896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CE09ADE-18D4-46D4-92A1-C8AACEFC43CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CE09ADE-18D4-46D4-92A1-C8AACEFC43CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CE09ADE-18D4-46D4-92A1-C8AACEFC43CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CE09ADE-18D4-46D4-92A1-C8AACEFC43CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{657522E5-649D-4456-978F-8CC9526607B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657522E5-649D-4456-978F-8CC9526607B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657522E5-649D-4456-978F-8CC9526607B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657522E5-649D-4456-978F-8CC9526607B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9E905C6-6E31-41AF-9BC5-7CA3C4BF83D3}
+	EndGlobalSection
+EndGlobal
