@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <PackageId>VKontakte.Net</PackageId>
+    <Title>VKontakte.Net</Title>
+    <Summary>VKontakte.Net is a full-blown high-performance VK (originally VKontakte) API realization for .NET that offers full support of all existing methods.</Summary>
+    <Authors>Khrabrov Arthur</Authors>
+    <Owners>Khrabrov Arthur</Owners>
+    <PackageIconUrl>https://s3.eu-central-1.amazonaws.com/vkcmgr.net/images/citrina1.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/khrabrovart/Citrina</PackageProjectUrl>
+    <Description>VKontakte.Net is a full-blown high-performance VK (originally VKontakte) API realization for .NET that offers full support of all existing methods.</Description>
+    <PackageReleaseNotes>
+      Just models
+    </PackageReleaseNotes>
+    <Copyright>Copyright 2019 (C) Arthur Khrabrov. All rights reserved.</Copyright>
+    <PackageTags>vk api vkontakte vkapi vkapinet vknet vkontaktenet</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <Version>1.0.0.0</Version>
+    <PackageLicenseUrl>https://github.com/khrabrovart/Citrina/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/khrabrovart/Citrina</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSource>True</IncludeSource>
+    <IncludeSymbols>True</IncludeSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+</Project>
