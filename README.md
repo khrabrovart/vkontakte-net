@@ -181,6 +181,3 @@ if (!serverRequest.IsError)
 		uploadRequest.Response.Hash, uploadRequest.Response.Photo);
 }
 ```
-
-
-### To be continued...
