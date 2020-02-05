@@ -71,7 +71,7 @@ namespace Citrina
         {
             var request = new Dictionary<string, string>
             {
-                ["access_token"] = accessToken?.Value,
+                ["access_token"] = accessToken.Value,
                 ["app_id"] = appId?.ToString(),
                 ["app_ids"] = RequestHelpers.ParseEnumerable(appIds),
                 ["platform"] = platform,
