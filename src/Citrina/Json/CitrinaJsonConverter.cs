@@ -15,9 +15,11 @@ namespace Citrina.Json
             Converters =
             {
                 new UnixDateConverter(),
-                new BooleanConverter()
+                new BooleanConverter(),
+                new NumberConverter(),
             },
-            ContractResolver = new SnakeCaseContractResolver()
+            ContractResolver = new SnakeCaseContractResolver(),
+            Error = (a,b) => b.ErrorContext.Handled = true,
         };
 
         public static T Deserialize<T>(string data)
